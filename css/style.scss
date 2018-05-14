@@ -1,0 +1,242 @@
+---
+---
+
+$header-bg-color: #51422c;
+$section-headings-color: #51422c;
+$large-breakpoint: 64em;
+$medium-breakpoint: 48em;
+
+@import "{{ site.theme }}";
+
+.page-header {
+  color: $header-heading-color;
+  text-align: center;
+  background-color: $header-bg-color;
+  background-image: url("/images/header_background.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-position: center; 
+
+  @include large {
+    padding: 2rem 6rem 3rem;
+  }
+
+  @include medium {
+    padding: 2rem 4rem 3rem;
+  }
+
+  @include small {
+    padding: 2.1rem 1rem 1rem;
+  }
+}
+
+
+.page-header a {
+  color: $header-heading-color;
+  text-decoration: none;
+  padding: 0 1rem;
+  &:hover {
+    text-decoration: underline;
+     @include large {
+    	background-color: $header-bg-color;
+    	}
+	 @include medium {
+    	background-color: $header-bg-color;
+    	}
+  }
+}
+
+
+.project-name {
+  margin-top: 0;
+  margin-bottom: 0.1rem;
+
+  @include large {
+    font-size: 2.4rem;
+  }
+
+  @include medium {
+    font-size: 1.8rem;
+  }
+
+  @include small {
+    font-size: 1.75rem;
+  }
+}
+
+
+.project-tagline {
+  font-weight: bold;
+  color: $header-heading-color;
+  opacity: 1.0;
+
+  @include large {
+    font-size: 1.6rem;
+    margin-bottom: 2rem;
+  }
+
+  @include medium {
+    font-size: 1.3rem;
+    margin-bottom: 1.5rem;
+  }
+
+  @include small {
+    font-size: 1rem;
+    margin-bottom: 0.5rem;
+  }
+}
+
+$base-line-height: 1.5 !default;
+$base-font-size: 16px !default;
+$background-color: #fdfdfd !default;
+$grey-color: #828282 !default;
+$grey-color-light: lighten($grey-color, 40%) !default;
+$spacing-unit: 30px !default;
+
+.site-nav {
+  float: left;
+  line-height: $base-line-height * $base-font-size * 1.25;
+  font-weight: bold;
+  
+  .nav-trigger {
+      display: none;
+  }
+
+  .menu-icon {
+    display: none;
+  }
+
+  .page-link {
+    color: $header-heading-color;
+    line-height: $base-line-height;
+    text-align: center;
+
+    // Gaps between nav items, but not on the last one
+    &:not(:last-child) {
+      margin-right: 20px;
+    }
+}
+
+  @include large {
+      width: 100%;
+      margin: 0 auto;
+  }
+  
+  @include medium {
+      width: 100%;
+      margin: 0 auto;
+  }
+
+  @include small {
+    position: absolute;
+    top: 8px;
+    right: $spacing-unit / 2;
+    background-color: $background-color;
+    border: 1px solid $grey-color-light;
+    border-radius: 5px;
+    text-align: right;
+
+    label[for="nav-trigger"] {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 36px;
+      z-index: 2;
+      cursor: pointer;
+    }
+
+    .menu-icon {
+      display: block;
+      float: right;
+      width: 36px;
+      height: 26px;
+      line-height: 0;
+      padding-top: 10px;
+      text-align: center;
+
+      > svg path {
+        fill: $section-headings-color;
+      }
+    }
+
+    input ~ .trigger {
+      clear: both;
+      display: none;
+    }
+
+    input:checked ~ .trigger {
+      display: block;
+      padding-bottom: 5px;
+    }
+
+    .page-link {
+      display: block;
+      padding: 5px 10px;
+      color: $section-headings-color;
+      text-align: right;
+
+      &:not(:last-child) {
+        margin-right: 0;
+      }
+      margin-left: 20px;
+    }
+  }
+}
+
+img[src$="centerme"] {
+  display:block;
+  margin: 0 auto;
+}
+
+img[src$="g2s3logo"] {
+  display:block;
+  @include large
+  {
+    width: 200px;
+  }
+  @include medium
+  {
+    width: 150px;
+  }
+  @include small
+  {
+    width: 250px;
+  }
+  margin: 0 auto;
+}
+
+.footerLeftCol
+{
+ @include large{
+    width: 200px;
+    float:left;
+    }
+    
+  @include medium{
+    width: 150px;
+    float:left;
+    }
+    
+  @include small{
+    width: 100%;
+    float:left;
+    }
+}
+
+.footerRightCol
+{
+ @include large
+ {
+    width: 600px;
+    float:right;
+    }
+    
+ @include medium{
+    width: 550px;
+    float:right;
+    }
+  @include small{
+    width: 100%;
+    float:left;
+    }
+}
