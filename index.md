@@ -3,7 +3,7 @@ title: Introduction
 layout: default
 ---
 
-hIPPYlib (Inverse Problems with Python libraries) implements state-of-the-art scalable algorithms
+[hIPPYlib](https://hippylib.github.io/) (Inverse Problems with Python libraries) implements state-of-the-art scalable algorithms
 for PDE-based deterministic and Bayesian inverse problems.
 It builds on [FEniCS](https://fenicsproject.org/) (a parallel finite element element library) for the discretization
 of the PDEs and on [PETSc](https://www.mcs.anl.gov/petsc/) for scalable and efficient linear algebra operations and solvers.
@@ -20,7 +20,7 @@ In the morning session, you will be provided with an ip address, user name and p
 the codes via ipython notebooks. Please do not exchange the user info.
 
 - If you are not familiar with FEniCS, the fastest way to start learning this tool is to download
-and read the first chapter of the FEniCS book from (here)[https://launchpadlibrarian.net/83776282/fenics-book-2011-10-27-final.pdf].
+and read the first chapter of the FEniCS book from [here](https://launchpadlibrarian.net/83776282/fenics-book-2011-10-27-final.pdf).
 Note the updated/new FEniCS tutorial version [here](http://hplgit.github.io/fenics-tutorial/doc/pub/fenics-tutorial-4print.pdf).
 For more detailed instructions, please check out the ``Getting started with FEniCS'' document available at 
 [here](http://faculty.ucmerced.edu/npetra/docs/).
