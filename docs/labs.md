@@ -3,7 +3,11 @@ title: Labs
 layout: default
 ---
 
-- Monday 06/18 (FEM jupyter & FEniCS):
+- Monday 06/18 (Setup, ill-posedness):
+  - Setup cloud access, intro to jupyter and notebooks
+  - Ill-posedness see [here](https://uvilla.github.io/inverse17/01_InverseProblemPrototype/inverseProblemPrototype.html)
+
+- Tuesday 06/19 (FEM and FEniCS):
   - Brief intro on Finite Element Methods (*Umberto* or *Georg*)
   - Handout log in information (*Umberto*)
   - Introduction to FEniCS (Poisson Equation in 1D/2D and FE convergence rates); (*Umberto*)
@@ -12,15 +16,12 @@ layout: default
      - see [here3](https://uvilla.github.io/inverse17/02_IntroToFenics/Poisson2D.html)
   - **Hands on exercise**: Change variational form, b.c., etc.
   
-- Tuesday 06/19 (hIPPYlib): 
+- Wednesday 06/20 (FEniCS): 
   - Calculus of Variation: Unconstrained Energy Minimization. (*Umberto*)
     - see [here](https://uvilla.github.io/inverse17/04_UnconstrainedMinimization/UnconstrainedMinimization.html)
-  - Spectrum of the Hessian for a linear inverse problem. May add a short explanation of *Randomized Eigensolvers*. (*Umberto*)
-    - see [here](https://uvilla.github.io/inverse17/03_HessianSpectrum/HessianSpectrum.html)
-  - **Hands on exercise**:
-    - Play around with the Hessian Spectrum
+  - Optional TV-denoising
   
-- Wednesday 06/20 (hIPPYlib):
+- Thursday 06/21 (hIPPYlib):
   - Deterministic Inversion: Steepest Descent Algorithm for Inverse Permeability Poisson Problem (*Umberto*):
     - see [here](https://uvilla.github.io/inverse17/05_Poisson_SD/Poisson_SD.html)
   - Deterministic Inversion: Inexaxt Newton-CG Algorithm for Inverse Permeability Poisson Problem (*Umberto*):
@@ -29,11 +30,7 @@ layout: default
     - Mesh refinement study and number of Newton/SD iterations
     - Extends the above codes to an advection diffusion problem
     
-- Thursday 06/21 (hIPPYlib):
-  - Linear Bayesian Inversion in hip: Inferring the Initial Condition for a Advection Diffusion Problem (*Umberto*)
-    - see [here](https://uvilla.github.io/inverse17/08_AddDivBayesian/AddDivBayesian.html)
-  - Bayesian Inversion in hIPPYlib: Linearized Inference of Log permeability (This notebook will be presented on Tuesday if we are successful in integrating MUQ and hIPPYlib) (*Umberto*).
-    - see [here](https://uvilla.github.io/inverse17/07_PoissonBayesian/PoissonBayesian.html)
+  - 
   - **Hands on exercise**:
     - Test the effect of different noise/prior covariances
    
@@ -47,6 +44,8 @@ layout: default
   - MCMC for high dimensional PDEs problems (Poisson Log Permeability): Hopefully we will present the hIPPYlib/MUQ integration, if not this will be a MUQ-only demonstration. (*Matt*)
   
 - Wednesday 06/27:
+  - Bayesian Inversion in hIPPYlib: Linearized Inference of Log permeability (*Umberto*).
+    - see [here](https://uvilla.github.io/inverse17/07_PoissonBayesian/PoissonBayesian.html)
   - Student projects
   
 - Thursday 06/29:
