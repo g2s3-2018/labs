@@ -1,0 +1,260 @@
+%% NSF allows 10pt Arial, but that violates the reviewers' 8th
+%% amendment rights 
+\documentclass[11pt]{article}
+
+%\usepackage{times}
+% \usepackage{newcent}
+%% FONTS
+%% To get the default sans serif font in latex, uncomment following line:
+\renewcommand*\familydefault{\sfdefault}
+%%
+%% to get Arial font as the sans serif font, uncomment following line:
+%\renewcommand{\sfdefault}{phv} % phv is the Arial font
+%%
+%% to get Helvetica font as the sans serif font, uncomment following line:
+%% \usepackage{helvet}
+\usepackage{wrapfig}
+
+%% the natbib package works better than cite 
+\usepackage[square,numbers,sort&compress]{natbib}
+
+\usepackage{color}
+
+\usepackage[small,bf,up]{caption}
+\renewcommand{\captionfont}{\footnotesize}
+\usepackage[left=1in,right=1in,top=1in,bottom=1in]{geometry}
+\usepackage{graphics,epsfig,graphicx,float,subfigure,color}
+\usepackage{algorithm,algorithmic}
+\usepackage{amsmath,amssymb,amsbsy,amsfonts,amsthm}
+%% \usepackage{subsec}
+\usepackage{comment}
+\usepackage{url}
+\usepackage{boxedminipage}
+\usepackage[sf,bf,small]{titlesec}
+%% \usepackage[textsize=footnotesize]{todonotes}
+
+% see documentation for titlesec package
+% \titleformat{\section}{\large \sffamily \bfseries}
+\titlelabel{\thetitle.\,\,\,}
+
+%% as a last resort, if we're short on space: 
+%% \renewcommand{\baselinestretch}{0.99}
+\newcommand{\bit}{\begin{itemize}}
+\newcommand{\eit}{\end{itemize}}
+
+\newcommand{\zapspace}{\topsep=0pt\partopsep=0pt\itemsep=0pt\parskip=0pt}
+\newcommand{\todo}[1]{\textcolor{red}{#1}}
+
+% \addtolength{\oddsidemargin}{-1.0in}%{-0.75in}
+% \addtolength{\textwidth}{1.75in}
+% \addtolength{\headsep}{-0.75in}
+% \addtolength{\textheight}{2.0in}
+
+% \setlength{\textheight}{9.0in}
+% \setlength{\textwidth}{6.5in}
+% \setlength{\parskip}{1ex}
+% \setlength{\parindent}{0em}
+
+\setlength{\emergencystretch}{20pt}
+
+\usepackage{amsmath,amssymb,amsbsy,amsfonts,amsthm,mathrsfs}
+\usepackage{fullpage,subfigure,graphicx,epsfig,url,color}
+\usepackage[plainpages=false, colorlinks=true,
+   citecolor=black, filecolor=black, linkcolor=black,
+   urlcolor=blue]{hyperref}
+
+%\include{ogmacros}
+
+\newcommand{\bdm}{\begin{displaymath}}
+\newcommand{\edm}{\end{displaymath}}
+
+\newcommand{\ben}{\begin{enumerate}}
+\newcommand{\een}{\end{enumerate}}
+
+\newcommand{\p}{\partial}
+\newcommand{\bs}{\boldsymbol}
+
+\renewcommand{\matrix}[1]{\ensuremath{\boldsymbol{#1}}}
+\newcommand{\K}{\ensuremath{\matrix{K}}}
+\newcommand{\F}{\ensuremath{\matrix{F}}}
+
+
+
+
+\begin{document}
+\pagestyle{empty}
+
+\begin{center}
+\large \textsf{%%
+Inverse Problems: Systematic Integration of Data with Models under Uncertainty\\
+2018 Gene Golub SIAM Summer School\\[1mm]
+\textbf{Lab sessions}}
+\end{center}
+
+\section{Software}
+
+We will use these libraries for the hands-on interactive learning exercises that complement the morning lectures:
+
+\begin{itemize}
+
+\item[-] hIPPYlib (Inverse Problems with Python libraries) implements state-of-the-art scalable algorithms for PDE-based deterministic and Bayesian inverse problems. It builds on FEniCS (a parallel finite element element library) for the discretization of the PDEs and on PETSc for scalable and efficient linear algebra operations and solvers. hIPPYlib's documentation and tutorial examples can be found at \url{https://hippylib.github.io}.
+
+\item[-] MUQ (MIT Uncertainty Quantification) provides tools for exact sampling of non-Gaussian posteriors, approximating computationally intensive forward models, implementing integral covariance operators, characterizing predictive uncertainties, and defining the Bayesian models required for these tasks. MUQ's documentation and tutorial examples can be found at \url{http://muq.mit.edu/}.
+
+\end{itemize}
+
+\noindent We will also make use of the following software:
+
+\bit
+\zapspace
+\item[-] Python 3.5, a high-level programming language\\
+\url{https://docs.python.org/3/}
+\item[-] Numpy, Scipy, and Matplotlib, three Python packages that offer similar functionality to Matlab\\
+\url{http://www.numpy.org/}; \url{https://www.scipy.org/}, and \url{http://matplotlib.org/}
+\item[-] Jupyter notebooks, a convenient way to write, run and document Python code using your web browser\\
+\url{http://jupyter.readthedocs.io/en/latest/index.html}
+\item[-] Docker, a software containerization platform that provides the simplest way to run our software stack on your computer\\
+\url{https://www.docker.com/}
+\item[-] FEniCS, the parallel finite element element library used by hIPPYlib\\
+\url{https://fenicsproject.org/}
+\eit
+
+\section{Cloud resources}
+
+We will use cloud-based interactive tutorials that mix instruction and theory with editable and runnable code. You can run the codes presented in the hands-on workshop through your web browser. This will allow you to test our software and experiment with inverse problem algorithms quite easily, without running into installation issues or version discrepancies. Cloud computing resources for the summer school were made available by the Extreme Science and Engineering Discovery Environment (XSEDE) Jetstream through allocation TG-DMS180009, which is supported by National Science Foundation grant number ACI-1548562.\\
+
+Cloud resources will be available for the entire duration of the summer school, and for a few weeks after the school itself to allow you experimenting with our software on your own. Log in information will be posted on our slack page. Please do not exchange the user info.
+
+\section{Local installation}
+
+As a precaution, we also suggest you to download and install Docker on your laptop so that you can also run the interactive tutorials locally in case of poor internet connection or issues with the cloud resources.
+
+\bit
+\item[-]{\bf MacOS El Capitan 10.11 or above}
+\vspace{-0.1in}
+\begin{enumerate}
+\item Download {\tt Docker for Mac} from\\
+\url{https://download.docker.com/mac/stable/Docker.dmg}.
+\item Open a new terminal shell.
+\item Type the following command
+\begin{verbatim}
+docker pull mparno/muq-hippylib
+\end{verbatim}
+\item For additional resources, see the {\tt Docker for Mac} tutorial\\
+\url{https://docs.docker.com/docker-for-mac/}
+\end{enumerate}
+
+\item[-]{\bf MacOS Yosemite 10.10 or below}
+\vspace{-0.1in}
+\begin{enumerate}
+\item Download {\tt Docker Toolbox} from\\
+\url{https://download.docker.com/mac/stable/DockerToolbox.pkg}
+\item Double click on {\tt Docker Quickstart Terminal}. A Linux-like shell will open.
+\item Type the following command
+\begin{verbatim}
+docker pull mparno/muq-hippylib
+\end{verbatim}
+\item For additional resources, see\\
+\url{https://docs.docker.com/toolbox/toolbox_install_mac/}
+\end{enumerate}
+
+\item[-]{\bf Windows 7 or above}
+\vspace{-0.1in}
+\begin{enumerate}
+\item Download {\tt Docker Toolbox} from\\ 
+\url{https://download.docker.com/win/stable/DockerToolbox.exe}
+\item Double click on {\tt Docker Quickstart Terminal}. A Linux-like shell will open.
+\item Type the following command
+\begin{verbatim}
+docker pull mparno/muq-hippylib
+\end{verbatim}
+\item For additional resources, see\\
+\url{https://docs.docker.com/toolbox/toolbox_install_windows/}
+\end{enumerate}
+\eit
+
+\section{FEniCS overview}
+
+FEniCS is a powerful, open-source suite of tools for automated
+solution of PDEs using finite elements. Part of the power for FEniCS
+is the ease with which one can create FE solvers by describing PDEs
+using weak forms in nearly-mathematical notation. The FEniCS project
+can be found at:
+\url{http://fenicsproject.org/} and comes with an extensive documentation and examples.\\
+
+\noindent FEniCS includes a number of powerful features that include:
+\vspace{-0.1in}
+\begin{itemize}
+\zapspace
+\item[-] Automated solution of variational problems;
+\item[-] Automated error control and adaptivity;
+\item[-] An extensive library of finite elements;
+\item[-] High performance linear algebra through backends to such
+  libraries as PETSc and Trilinos;
+\item[-] Visualization via a simple interactive plotting function, as
+  well as output in VTK format;
+% for visualization in ParaView. 
+\item[-] Python and C++ interfaces;
+\item[-] Extensive documentation (see for instance:
+  \url{https://fenicsproject.org/documentation/}).
+\end{itemize}
+
+\subsection{FEniCS resources}
+
+The documentation for FEniCS is extensive. Resources include:
+
+\bit 
+ \item[-] {\bf The FEniCS Tutorial.} The book \emph{Solving PDEs in Python: The FEniCS Tutorial Volume I}
+ is the is the perfect guide for new users. The tutorial explains fundamental concepts of the finite element method,
+ FEniCS programming, and demonstrates how to quickly solve a number of PDEs.
+ 
+ The PDF version of the book can be downloaded (legally and for free) from\\
+ \url{https://fenicsproject.org/pub/tutorial/pdf/fenics-tutorial-vol1.pdf}.
+ 
+ Python scripts for all the examples described in the tutorial can be found at\\
+ \url{https://github.com/hplgit/fenics-tutorial/tree/master/pub/python/vol1}
+ 
+ \item[-] {\bf FEniCS Demos.} These documented demonstration programs are
+   a great way to learn the different features in FEniCS.  They come
+   already packaged in FEniCS when you install it and are available on-line at:\\
+\url{http://fenics.readthedocs.io/projects/dolfin/en/2017.2.0/demos.html}.
+
+\item[-] {\bf Quick Programmer's References.} Some of the classes and
+  functions in DOLFIN are more frequently used than others. The Python
+  implementations are described in\\
+\url{https://fenicsproject.org/docs/dolfin/2017.2.0/python/quick_reference.html}.
+
+\item[-] {\bf Complete Programmer's References.} If you need more details on a particular class or function,
+you can also consult the Complete Programmer's References at\\
+{\footnotesize \url{https://fenicsproject.org/docs/dolfin/2017.2.0/python/programmers-reference/index.html} }.
+
+\item[-] {\bf Getting Help.} See: \url{https://fenicsproject.org/community/}
+
+\eit
+
+Other resources, although a little outdated and not fully compatible
+with the latest versions of FEniCS, include:
+
+\bit
+\item[-] {\bf The FEniCS Book:} All 732 pages of the FEniCS book ({\em
+  Automated Solution of Differential Equations by the Finite Element
+  Method}) can be downloaded (legally!) from here:\\
+{\footnotesize \url{http://launchpad.net/fenics-book/trunk/final/+download/fenics-book-2011-10-27-final.pdf}}.\\
+%
+This is the comprehensive reference to FEniCS, along with many
+examples of the applications of FEniCS to problems in science and
+engineering. You will notice that the first chapter of the book is
+just the FEniCS Tutorial (with some minor editorial differences).
+
+\item[-] {\bf The FEniCS Manual.} This is a 200-page excerpt from the
+  FEniCS Book, including the FEniCS Tutorial, an introduction to the
+  finite element method, and documentation of DOLFIN and UFL:\\
+%
+{\small \url{http://launchpad.net/fenics-book/trunk/final/+download/fenics-manual-2011-10-31.pdf}}.\\
+%
+Since it's an excerpt from the FEniCS Book, you probably won't need
+it. 
+\eit
+
+
+\end{document}
