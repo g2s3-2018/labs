@@ -37,8 +37,8 @@ obsMat = np.linalg.solve(beam.K,B.T).T
 
 
 priorVar = 10*10
-priorLength = 1.5
-priorNu = 1.0/2.0 # must take the form N+1/2 for zero or odd N (i.e., {0,1,3,5,...})
+priorLength = 0.5
+priorNu = 3.0/2.0 # must take the form N+1/2 for zero or odd N (i.e., {0,1,3,5,...})
 
 kern1 = ma.MaternKernel(1, 1.0, priorLength, priorNu)
 kern2 = ma.ConstantKernel(1, 10*10)
@@ -62,7 +62,8 @@ fTrue['/ForwardModel/SystemMatrix'] = beam.K
 
 fTrue['/Observations/ObservationMatrix'] = B 
 fTrue['/Observations/ObservationData'] = np.dot(A,q)
-
+fTrue['/Observations/LoadSum'] = np.sum(q)*np.ones(1)
+fTrue['/Observations/LoadPoint'] = np.sum(q[-1])*np.ones(1)
 
 fObs['/ForwardModel/NodeLocations'] = x
 fObs['/ForwardModel/Modulus'] = E
@@ -71,6 +72,8 @@ fObs['/ForwardModel/SystemMatrix'] = beam.K
 fObs['/Observations/ObservationMatrix'] = B 
 fObs['/Observations/ObservationData'] = np.dot(A,q)
 fObs['/Observations/LoadSum'] = np.sum(q)*np.ones(1)
+fObs['/Observations/LoadPoint'] = np.sum(q[-1])*np.ones(1)
+
 print(q)
 
 
