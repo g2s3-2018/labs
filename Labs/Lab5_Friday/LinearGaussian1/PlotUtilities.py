@@ -25,7 +25,7 @@ def PlotGaussianPDF(mean, cov):
     for i in range(dim):
         axs[i,i].tick_params(axis='y',which='both',left=False,right=False,labelleft=False)
         
-        axs[i,i].set_title('$\\beta_%d$'%i)
+        axs[i,i].set_title('$m_%d$'%i)
         if(i==dim-1):
             axs[i,i].tick_params(labelsize=8)
         else:
