@@ -45,16 +45,16 @@ For more detailed instructions, please check out the ''Getting started with FEni
   - [Spectrum of Hessian operator](notebooks/HessianSpectrum.html): This notebook illustrates the spectral properties of the preconditioned Hessian misfit operator ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab3_Thursday/HessianSpectrum.ipynb))
    
 - **Gaussian processes, Bayesian inference for linear inverse problems** (Friday 06/22):
-  - Gaussian processes
-  - Bayesian Linear Regression
-  - Inferring loads on an Euler Bernoulli beam
+  - [Gaussian processes](notebooks/GaussianProcessDemo.html)
+  - [Bayesian Linear Regression](notebooks/LinearGaussian1_SimpleRegression.html)
+  - [Inferring loads on an Euler Bernoulli beam](notebooks/EulerBernoulliLoads.html)
   
 - **Sampling methods, logistic regression** (Monday 06/25):
-  - Sampling methods
-  - Multinomial Logistic Regression for Sea Ice Age
+  - [Sampling methods](notebooks/SamplingTechniques.html)
+  - [Multinomial Logistic Regression for Sea Ice Age](notebooks/MultiLogisticRegression_SeaIceAge.html)
   
 - **Bayesian inference, Markov Chain Monte Carlo** (Tuesday 06/26):
-  - Inferring material properties of a cantilevered beam
+  - [Inferring material properties of a cantilevered beam](notebooks/EulerBernoulli_Lumped.html)
   
 - **Infinite dimesional Bayesian inference, Laplace Approximation, MCMC** (Wednesday 06/27):
   - [Gaussian priors](notebooks/Gaussian_priors.html): This notebook illustrate how to construct PDE-based priors that lead to well-posed Bayesian inverse problems in infinite dimesions ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab7_Wednesday/Gaussian_priors.ipynb) )
