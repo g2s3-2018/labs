@@ -5,15 +5,15 @@
 
 An illustrative example of ill-posedness is the inversion for the initial condition for a one-dimensional heat equation.
 
-Specifically, we consider a rod of length $L$, and let $u(x,t)$ denote the temperature of the rod at point $x$ and time $t$. 
-We are interested in reconstructing the initial temperature profile $m(x) = u(x, 0)$ given some noisy measurements $d$ of the temperature profile at a later time $T$.
+Specifically, we consider a rod of length $$L$$, and let $$u(x,t)$$ denote the temperature of the rod at point $$x$$ and time $$t$$. 
+We are interested in reconstructing the initial temperature profile $$m(x) = u(x, 0)$$ given some noisy measurements $$d$$ of the temperature profile at a later time $$T$$.
 
 ### Forward problem
 
 Given
-- the initial temperature profile $u(x,0) = m(x)$,
-- the thermal diffusivity $k$,
-- a prescribed temperature $u(0,t) = u(L,t) = 0$ at the ends of the rod,
+- the initial temperature profile $$u(x,0) = m(x)$$,
+- the thermal diffusivity $$k$$,
+- a prescribed temperature $$u(0,t) = u(L,t) = 0$$ at the ends of the rod,
 
 solve the heat equation
 
@@ -27,7 +27,7 @@ u(0,t) = u(L,t) = 0 & \forall t \in (0, T],
 \right.
 $$
 
-and observe the temperature at the final time $T$:
+and observe the temperature at the final time $$T$$:
 
 $$ \mathcal{F}(m) = u(x, T). $$
 
@@ -44,7 +44,7 @@ is the unique solution to the heat equation.
 
 ### Inverse problem
 
-Given the forward model $\mathcal{F}$ and a noisy measurement $d$ of the temperature profile at time $T$, find the initial temperature profile $m$ such that
+Given the forward model $$\mathcal{F}$$ and a noisy measurement $$d$$ of the temperature profile at time $$T$$, find the initial temperature profile $$m$$ such that
 
 $$ \mathcal{F}(m) = d. $$
 
@@ -54,38 +54,38 @@ Consider a perturbation
 
 $$ \delta m(x) = \varepsilon \sin\left(i \, \frac{\pi}{L} x \right), $$
 
-where $\varepsilon > 0$ and $i = 1, 2, 3, \ldots$.
+where $$\varepsilon > 0$$ and $$i = 1, 2, 3, \ldots$$.
 
-Then, by linearity of the forward model $\mathcal{F}$, the corresponding perturbation $\delta d(x) = \mathcal{F}(m + \delta m) - \mathcal{F}(m)$ is
+Then, by linearity of the forward model $$\mathcal{F}$$, the corresponding perturbation $$\delta d(x) = \mathcal{F}(m + \delta m) - \mathcal{F}(m)$$ is
 
 $$ \delta d(x) = \varepsilon\, e^{ -k\left(i \, \frac{\pi}{L}\right)^2 T} \sin\left(i \, \frac{\pi}{L} x \right),$$
 
-which converges to zero as $i \rightarrow +\infty$.
+which converges to zero as $$i \rightarrow +\infty$$.
 
-Hence the ratio between $\delta m$ and $\delta d$ can become arbitrary large, which shows that the stability requirement for well-posedness can not be satisfied.
+Hence the ratio between $$\delta m$$ and $$\delta d$$ can become arbitrary large, which shows that the stability requirement for well-posedness can not be satisfied.
 
 ### Discretization
 
 To discretize the problem, we use finite differences in space and Implicit Euler in time.
 
 #### Semidiscretization in space
-We divide the $[0, L]$ interval in $n_x$ subintervals of the same lenght $h = \frac{L}{n_x}$, and we denote with $u_j(t) := u( jh, t)$ the value of the temperature at point $x_j = jh$ and time $t$.
+We divide the $$[0, L]$$ interval in $$n_x$$ subintervals of the same lenght $$h = \frac{L}{n_x}$$, and we denote with $$u_j(t) := u( jh, t)$$ the value of the temperature at point $$x_j = jh$$ and time $$t$$.
 
 We then use a centered finite difference approximation of the second derivative in space and write
 
 $$ \frac{\partial u_j(t)}{\partial t} - k \frac{u_{j-1}(t) - 2u_j(t) + u_{j+1}(t)}{h^2} \quad \text{for } j=1,2,\ldots,n_x-1,$$
 
-with the boundary condition $u_0(t) = u_{n_x}(t) = 0$.
+with the boundary condition $$u_0(t) = u_{n_x}(t) = 0$$.
 
-We let $n = n_x-1$ be the number of discretization points in the interior of the interval $[0, L]$, and let 
+We let $$n = n_x-1$$ be the number of discretization points in the interior of the interval $$[0, L]$$, and let 
 
 $$ \mathbf{u}(t) = \begin{bmatrix}u_1(t)\\u_2(t)\\ \ldots\\ u_{n_x-1}(t) \end{bmatrix} \in \mathbb{R}^n $$
 
-be the vector collecting the values of the temperature $u(x,t)$ at the points $x_j = j\,h$ with $j=1,\ldots,n_x-1$.
+be the vector collecting the values of the temperature $$u(x,t)$$ at the points $$x_j = j\,h$$ with $$j=1,\ldots,n_x-1$$.
 
 We then write the system of ordinary differential equations (ODEs):
 $$ \frac{\partial}{\partial t} \mathbf{u}(t) + K \mathbf{u}(t) = 0,$$
-where $K \in \mathbb{R}^{n \times n}$ is the tridiagonal matrix given by
+where $$K \in \mathbb{R}^{n \times n}$$ is the tridiagonal matrix given by
 
 $$ K = \frac{k}{h^2}\begin{bmatrix}  2 & -1 &       &        &        &    \\
                                     -1 &  2 & -1    &        &        &    \\
@@ -96,12 +96,12 @@ $$ K = \frac{k}{h^2}\begin{bmatrix}  2 & -1 &       &        &        &    \\
                      \end{bmatrix}.$$
                      
 #### Time discretization
-We subdivide the time interval $(0, T]$ in $n_t$ time step of size $\Delta t = \frac{T}{n_t}$.
-By letting $\mathbf{u}^{(i)} = \mathbf{u}(i\,\Delta t)$ denote the discretized temperature profile at time $t_i = i\,\Delta t$, the Implicit Euler scheme reads
+We subdivide the time interval $$(0, T]$$ in $$n_t$$ time step of size $$\Delta t = \frac{T}{n_t}$$.
+By letting $$\mathbf{u}^{(i)} = \mathbf{u}(i\,\Delta t)$$ denote the discretized temperature profile at time $$t_i = i\,\Delta t$$, the Implicit Euler scheme reads
 
 $$ \frac{\mathbf{u}^{(i+1)} - \mathbf{u}^{(i)}}{\Delta t} + K\mathbf{u}^{(i+1)} = 0, \quad \text{for } i=0,1,\ldots, n_t-1.$$
 
-After simple algebraic manipulations and exploiting the initial condition $u(x,0) = m(x)$, we then obtain
+After simple algebraic manipulations and exploiting the initial condition $$u(x,0) = m(x)$$, we then obtain
 
 $$
 \left\{
@@ -116,7 +116,7 @@ or equivalently
 
 $$ \mathbf{u}^{(i)} = \left( I + \Delta t\, K\right)^{-i} \mathbf{m}.$$
 
-In the code below, the function `assembleMatrix` generates the finite difference matrix $\left( I + \Delta t\, K \right)$ and the function `solveFwd` evaluates the forward model
+In the code below, the function `assembleMatrix` generates the finite difference matrix $$\left( I + \Delta t\, K \right)$$ and the function `solveFwd` evaluates the forward model
 
 $$ F\, \mathbf{m} = \left( I + \Delta t\, K\right)^{-n_t}\, \mathbf{m}. $$
 
@@ -159,11 +159,11 @@ def solveFwd(m, k, h, dt, n, nt):
 
 ### A naive solution to the inverse problem
 
-If $\mathcal{F}$ is invertible a naive solution to the inverse problem $\mathcal{F} m = d$ is simply to set
+If $$\mathcal{F}$$ is invertible a naive solution to the inverse problem $$\mathcal{F} m = d$$ is simply to set
 
 $$ m = \mathcal{F}^{-1} d. $$
 
-The function `naiveSolveInv` computes the solution of the discretized inverse problem $\mathbf{m} = F^{-1} \mathbf{d}$ as
+The function `naiveSolveInv` computes the solution of the discretized inverse problem $$\mathbf{m} = F^{-1} \mathbf{d}$$ as
 
 $$ \mathbf{m} = \left( I + \Delta t\,K\right)^{n_t} \mathbf{d}. $$
 
@@ -268,15 +268,15 @@ plt.show()
 
 #### Spectral property of the parameter to observable map
 
-Let $v_i = \sqrt{\frac{2}{L}} \sin\left( i \, \frac{\pi}{L} x \right)$ with $i=1,2,3, \ldots$, then we have that
+Let $$v_i = \sqrt{\frac{2}{L}} \sin\left( i \, \frac{\pi}{L} x \right)$$ with $$i=1,2,3, \ldots$$, then we have that
 
 $$ \mathcal{F} v_i = \lambda_i v_i, \quad \text{where the eigenvalues } \lambda_i = e^{-kT\left(\frac{\pi}{L} i \right)^2}. $$
 
 **Note**:
-- Large eigenvalues $\lambda_i$ corresponds to smooth eigenfunctions $v_i$;
-- Small eigenvalues $\lambda_i$ corresponds to oscillatory eigenfuctions $v_i$.
+- Large eigenvalues $$\lambda_i$$ corresponds to smooth eigenfunctions $$v_i$$;
+- Small eigenvalues $$\lambda_i$$ corresponds to oscillatory eigenfuctions $$v_i$$.
 
-The figure below shows that the eigenvalues $\lambda_i$ of the continuous parameter to obervable map $\mathcal{F}$ decays extremely (exponentially) fast.
+The figure below shows that the eigenvalues $$\lambda_i$$ of the continuous parameter to obervable map $$\mathcal{F}$$ decays extremely (exponentially) fast.
 
 
 ```python
@@ -302,13 +302,13 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_8_0.png)
 
 
-In a similar way, the figure below show the eigenvalues of the discrete parameter to observable map $F$: their fast decay means that $F$ is extremely ill conditioned.
+In a similar way, the figure below show the eigenvalues of the discrete parameter to observable map $$F$$: their fast decay means that $$F$$ is extremely ill conditioned.
 
-In the code below we assemble the matrix $F$ column-by-column, by computing its actions on the canonical vectors 
+In the code below we assemble the matrix $$F$$ column-by-column, by computing its actions on the canonical vectors 
 $$\mathbf{m}_i = \begin{bmatrix} 0 \\ \ldots \\ 0\\ 1 \\ 0\\ \ldots \\0 \end{bmatrix}, \quad i = 1,\ldots,n,$$
-where the $i$th entry is the only non-zero component of $\mathbf{m}_i$.
+where the $$i$$th entry is the only non-zero component of $$\mathbf{m}_i$$.
 
-> **Disclaimer**: $F$ is a large dense implicitly defined operator and should never be built explicitly for a real problem (since it would require $\mathcal{O}(n)$ evaluations of the forward problem and $\mathcal{O}( n^2)$ storage); instead --- as you will learn later this week --- scalable algorithms for the solution of the inverse problem only require the ability to compute the action of $F$ on a few given directions $\mathbf{m}$.
+> **Disclaimer**: $$F$$ is a large dense implicitly defined operator and should never be built explicitly for a real problem (since it would require $$\mathcal{O}(n)$$ evaluations of the forward problem and $$\mathcal{O}( n^2)$$ storage); instead --- as you will learn later this week --- scalable algorithms for the solution of the inverse problem only require the ability to compute the action of $$F$$ on a few given directions $$\mathbf{m}$$.
 
 
 ```python
@@ -345,9 +345,9 @@ plt.show()
 
 #### Informed and uninformed modes
 
-The functions $v_i$ ($i=1,2,3, \ldots$) form an orthonormal basis of L^2([0,1]). 
+The functions $$v_i$$ ($$i=1,2,3, \ldots$$) form an orthonormal basis of L^2([0,1]). 
 
-That is, every function $f \in L^2([0,1])$ can be written as
+That is, every function $$f \in L^2([0,1])$$ can be written as
 
 $$ f = \sum_{i=1}^\infty \alpha_i v_i, \text{ where } \alpha_i = \int_0^1 f v_i dx.$$
 
@@ -356,59 +356,59 @@ Consider now the noisy problem
 $$ d = \mathcal{F}\,m_{\rm true} + \eta, $$
 
 where
-- $d$ is the data (noisy measurements)
-- $\eta$ is the noise: $\eta(x) = \sum_{n=1}^\infty \eta_n v_n(x)$
-- $m_{\rm true}$ is the true value of the parameter that generated the data
-- $\mathcal{F}$ is the forward heat equation
+- $$d$$ is the data (noisy measurements)
+- $$\eta$$ is the noise: $$\eta(x) = \sum_{n=1}^\infty \eta_n v_n(x)$$
+- $$m_{\rm true}$$ is the true value of the parameter that generated the data
+- $$\mathcal{F}$$ is the forward heat equation
 
-Then, the naive solution to the inverse problem $\mathcal{F}m = d$ is
+Then, the naive solution to the inverse problem $$\mathcal{F}m = d$$ is
 
 $$ m = \mathcal{F}^{-1}d = \mathcal{F}^{-1}\left( \mathcal{F}\,m_{\rm true} + \eta \right) = m_{\rm true} + \mathcal{F}^{-1} \eta = m_{\rm true} + \mathcal{F}^{-1} \sum_{i=1}^{\infty} \eta_i v_i = m_{\rm true} +  \sum_{i=1}^{\infty} \frac{\eta_i}{\lambda_i} v_i. $$
 
-If the coefficients $\eta_i = \int_0^1 \eta(x) \, v_i(x) \, dx$ do not decay sufficiently fast with respect to the eigenvalues $\lambda_i$, then the naive solution is unstable.
+If the coefficients $$\eta_i = \int_0^1 \eta(x) \, v_i(x) \, dx$$ do not decay sufficiently fast with respect to the eigenvalues $$\lambda_i$$, then the naive solution is unstable.
 
 This implies that oscillatory components can not reliably be reconstructed from noisy data since they correspond to small eigenvalues.
 
 ### Tikhonov regularization
 
-The remedy is to find a parameter $m$ that solves the inverse problem $\mathcal{F}\, m = d$ in a *least squares sense*.
+The remedy is to find a parameter $$m$$ that solves the inverse problem $$\mathcal{F}\, m = d$$ in a *least squares sense*.
 Specifically, we solve the minimization problem
 
 $$ \min_m \frac{1}{2} \int_0^L (\mathcal{F}\, m - d )^2 dx + \frac{\alpha}{2} \mathcal{R}(m), $$
 
-where the Tikhonov regularization $\mathcal{R}(m)$ is a quadratic functional of $m$.
-In what follow, we will penalize the $L^2$-norm of the initial condition and let $\mathcal{R}(m) = \int_0^L m^2 dx$. However other choices are possible; for example by penalizing the $L^2$-norm of the gradient of $m$ ($\mathcal{R}(m) = \int_0^L m_x^2$), one will favor smoother solutions.
+where the Tikhonov regularization $$\mathcal{R}(m)$$ is a quadratic functional of $$m$$.
+In what follow, we will penalize the $$L^2$$-norm of the initial condition and let $$\mathcal{R}(m) = \int_0^L m^2 dx$$. However other choices are possible; for example by penalizing the $$L^2$$-norm of the gradient of $$m$$ ($$\mathcal{R}(m) = \int_0^L m_x^2$$), one will favor smoother solutions.
 
-The regularization parameter $\alpha$ needs to be chosen appropriately. If $\alpha$ is small, the computation of the initial condition $m$ is unstable as in the naive approach. On the other hand, if $\alpha$ is too large, information is lost in the reconstructed $m$. Various criteria --- such as Morozov's discrepancy principle or L-curve criterion  --- can be used to find the optimal amount of regularization (see the **Hands on** section).
+The regularization parameter $$\alpha$$ needs to be chosen appropriately. If $$\alpha$$ is small, the computation of the initial condition $$m$$ is unstable as in the naive approach. On the other hand, if $$\alpha$$ is too large, information is lost in the reconstructed $$m$$. Various criteria --- such as Morozov's discrepancy principle or L-curve criterion  --- can be used to find the optimal amount of regularization (see the **Hands on** section).
 
 #### Morozov's discrepancy principle
 
-The discrepancy principle, due to Morozov, chooses the regularization parameter to be the largest value of $\alpha$ such that the norm of the misfit is bounded by the noise level in the data, i.e.,
+The discrepancy principle, due to Morozov, chooses the regularization parameter to be the largest value of $$\alpha$$ such that the norm of the misfit is bounded by the noise level in the data, i.e.,
 
 $$ \| \mathcal{F}\,m_\alpha - d \| \leq \delta, $$ 
 
-where $\delta$ is the noise level. Here, $m_\alpha$ denotes the parameter found minimizing the Tikhonov regularized minimization problem with parameter $\alpha$. This choice aims to avoid overfitting of the data, i.e., fitting the noise.
+where $$\delta$$ is the noise level. Here, $$m_\alpha$$ denotes the parameter found minimizing the Tikhonov regularized minimization problem with parameter $$\alpha$$. This choice aims to avoid overfitting of the data, i.e., fitting the noise.
 
 #### L-curve criterion
 
-Choosing $\alpha$ parameter using the L-curve criterion requires the solution of inverse problems for a sequence of regularization parameters. Then, for each $\alpha$, the norm of the data misfit (also called residual) $\| \mathcal{F}\,m_\alpha - d \|$ is plotted against the norm of the regularization term $\|m_\alpha\|$ in a log-log plot.
-This curve usually is found to be L-shaped and thus has an *elbow*, i.e. a point of greatest curvature. The L-curve criterion chooses the regularization parameter corresponding to that point. The idea behind the L-curve criterion is that this choice for the regularization parameter is a good compromise between fitting the data and controlling the stability of the parameters. A smaller $\alpha$, which correspond to points to the left of the optimal value, only leads to a slightly better data fit while significantly increasing the norm of the parameters. Conversely, a larger $\alpha$, corresponding to points to the right of the optimal value, slightly decrease the norm of the solution, but they increase the data misfit significantly.
+Choosing $$\alpha$$ parameter using the L-curve criterion requires the solution of inverse problems for a sequence of regularization parameters. Then, for each $$\alpha$$, the norm of the data misfit (also called residual) $$\| \mathcal{F}\,m_\alpha - d \|$$ is plotted against the norm of the regularization term $$\|m_\alpha\|$$ in a log-log plot.
+This curve usually is found to be L-shaped and thus has an *elbow*, i.e. a point of greatest curvature. The L-curve criterion chooses the regularization parameter corresponding to that point. The idea behind the L-curve criterion is that this choice for the regularization parameter is a good compromise between fitting the data and controlling the stability of the parameters. A smaller $$\alpha$$, which correspond to points to the left of the optimal value, only leads to a slightly better data fit while significantly increasing the norm of the parameters. Conversely, a larger $$\alpha$$, corresponding to points to the right of the optimal value, slightly decrease the norm of the solution, but they increase the data misfit significantly.
 
 
 ### Discretization
-In the discrete setting, the Tikhonov regularized solution $\mathbf{m}_{\alpha}$ solves the penalized least squares problem
+In the discrete setting, the Tikhonov regularized solution $$\mathbf{m}_{\alpha}$$ solves the penalized least squares problem
 
 $$ \min_{\mathbf{m}} \frac{1}{2} \| F\, \mathbf{m} - \mathbf{d} \|^2 + \frac{\alpha}{2} \| \mathbf{m} \|^2, $$
 
-where $\| \cdot \|$ denotes the Euclidean vector norm in $\mathbb{R}^n$.
+where $$\| \cdot \|$$ denotes the Euclidean vector norm in $$\mathbb{R}^n$$.
 
-$\mathbf{m}_{\alpha}$ can then be computed by solving the normal equations
+$$\mathbf{m}_{\alpha}$$ can then be computed by solving the normal equations
 
 $$ ( F^t F + \alpha I) \mathbf{m}_{\alpha} = F^t \mathbf{d}.$$
 
-The code below, find the Tikhonov regularized solution $\mathbf{m}_{\alpha}$ for $\alpha = 1e-3$.
+The code below, find the Tikhonov regularized solution $$\mathbf{m}_{\alpha}$$ for $$\alpha = 1e-3$$.
 
-> **Disclaimer**: In the code below, for simplicity, we explicitly construct and factorize the matrix $F^t F + \alpha I$. This approach is not feasible and should **never** be used to solve real problems (the computational cost is  $\mathcal{O}(n^3)$). Instead, as we will see tomorrow, one should solve the normal equations using the conjugate gradient algorithm, which only requires the ability to compute the action of $F^t F + \alpha I$ on a few given directions $\mathbf{m}$, and is guaranteed to converge in a number of iterations that is independent of $n$.
+> **Disclaimer**: In the code below, for simplicity, we explicitly construct and factorize the matrix $$F^t F + \alpha I$$. This approach is not feasible and should **never** be used to solve real problems (the computational cost is  $$\mathcal{O}(n^3)$$). Instead, as we will see tomorrow, one should solve the normal equations using the conjugate gradient algorithm, which only requires the ability to compute the action of $$F^t F + \alpha I$$ on a few given directions $$\mathbf{m}$$, and is guaranteed to converge in a number of iterations that is independent of $$n$$.
 
 
 ```python
@@ -469,11 +469,11 @@ plt.show()
 ## Problem 1: Spectrum of the parameter to observable map
 
 ### Question a:
-Set $T=1$, $L=1$, $n_x = 200$, and $n_t = 100$, and plot the
-decay of the eigenvalues of both the continuous ($\mathcal{F}$) and
-the discrete ($F$) parameter-to-observable maps as a function of the index $i$.
+Set $$T=1$$, $$L=1$$, $$n_x = 200$$, and $$n_t = 100$$, and plot the
+decay of the eigenvalues of both the continuous ($$\mathcal{F}$$) and
+the discrete ($$F$$) parameter-to-observable maps as a function of the index $$i$$.
 
-Do this for the following values of $k$: 0.0001, 0.001, 0.01, 0.1, 1.0 (all on the same plot).
+Do this for the following values of $$k$$: 0.0001, 0.001, 0.01, 0.1, 1.0 (all on the same plot).
 
 
 ```python
@@ -507,9 +507,9 @@ plt.show()
 
 
 ### Question b:
-Set $L=1$, $k = 0.01$ and $T=0.1$; plot the decay of the discrete eigenvalues as a function of $n_x, n_t$ for different resolutions in the space and time discretization. 
+Set $$L=1$$, $$k = 0.01$$ and $$T=0.1$$; plot the decay of the discrete eigenvalues as a function of $$n_x, n_t$$ for different resolutions in the space and time discretization. 
 
-Use $(n_x, n_t) = (20, 20), (40, 40), (80,80), (160, 160)$.
+Use $$(n_x, n_t) = (20, 20), (40, 40), (80,80), (160, 160)$$.
 
 What do you observe as you increase the resolution? 
 
@@ -543,9 +543,9 @@ These spectral properties are common to many other discretized parameter-to-obse
 ## Problem 2: Tikhonov Regularization
 
 Consider the same inverse heat equation problem above
-with $L=1$, $T=0.1$, $k=0.01$.
+with $$L=1$$, $$T=0.1$$, $$k=0.01$$.
 
-Discretize the problem using $n_x = 200$ intervals in space and $n_t = 100$ time steps.
+Discretize the problem using $$n_x = 200$$ intervals in space and $$n_t = 100$$ time steps.
 
 As initial condition use the (discrete version of) the true initial temperature profile 
 
@@ -561,9 +561,9 @@ m_true = np.maximum( np.zeros_like(x), 1. - np.abs(1. - 4.*x)) \
          + 100.*np.power(x,10)*np.power(1.-x,2)
 ```
 
-Add normally distributed noise $\mathbf{n}$ with mean zero and
-variance $\sigma^2 = 10^{-4}$. The resulting noisy observation of the
-final time temperature profile is $\mathbf{d} = F \mathbf{m} + \mathbf{n}$.
+Add normally distributed noise $$\mathbf{n}$$ with mean zero and
+variance $$\sigma^2 = 10^{-4}$$. The resulting noisy observation of the
+final time temperature profile is $$\mathbf{d} = F \mathbf{m} + \mathbf{n}$$.
 
 
 ```python
@@ -601,8 +601,8 @@ plt.show()
 
 
 ### Question a
-Use Tikhonov regularization with $\alpha = 0.0001,0.001,0.01,0.1,1$ to compute the regularized
-reconstructions $\mathbf{m}_\alpha$.
+Use Tikhonov regularization with $$\alpha = 0.0001,0.001,0.01,0.1,1$$ to compute the regularized
+reconstructions $$\mathbf{m}_\alpha$$.
 
 
 ```python
@@ -622,10 +622,10 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_21_0.png)
 
 
-In the *eye norm*, the best reconstruction $\mathbf{m}_\alpha$ is for $\alpha$ between $0.01$ and $0.001$. For such values of $\alpha$ the reconstructed solution well captures the smooth features of the true parameter, and it does not present spurious oscillations.
+In the *eye norm*, the best reconstruction $$\mathbf{m}_\alpha$$ is for $$\alpha$$ between $$0.01$$ and $$0.001$$. For such values of $$\alpha$$ the reconstructed solution well captures the smooth features of the true parameter, and it does not present spurious oscillations.
 
 ### Question b
-Determine the (approximate) optimal value of the regularization parameter $\alpha$ in the Tikhonov regularization using the L-curve criterion.
+Determine the (approximate) optimal value of the regularization parameter $$\alpha$$ in the Tikhonov regularization using the L-curve criterion.
 
 
 ```python
@@ -648,17 +648,17 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_24_0.png)
 
 
-The *elbow* of the L-curve is located between $\alpha = 10^{-4}$ and $\alpha = 10^{-3}$. 
+The *elbow* of the L-curve is located between $$\alpha = 10^{-4}$$ and $$\alpha = 10^{-3}$$. 
 
 ### Question c
-Determine the (approximate) optimal value of the regularization parameter $\alpha$ in the Tikhonov regularization 
-using Morozov's discrepancy criterion, i.e., find the largest value of $\alpha$ such that 
+Determine the (approximate) optimal value of the regularization parameter $$\alpha$$ in the Tikhonov regularization 
+using Morozov's discrepancy criterion, i.e., find the largest value of $$\alpha$$ such that 
 
 $$
 \|F\,\mathbf{m}_\alpha - \mathbf{d}\| \le \delta
 $$
 
-where $\delta=\| \mathbf{n}\|$ and $\mathbf{m}_\alpha$ is the solution of the Tikhonov-regularized inverse problem with regularization parameter $\alpha$.
+where $$\delta=\| \mathbf{n}\|$$ and $$\mathbf{m}_\alpha$$ is the solution of the Tikhonov-regularized inverse problem with regularization parameter $$\alpha$$.
 
 
 ```python
@@ -681,12 +681,12 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_27_0.png)
 
 
-Since the noise $\mathbf{n}$ is a i.i.d. Gaussian vector in $\mathbb{R}^n$ with marginal variance $\sigma^2=10^{-4}$, then we expect the $\delta = \|\mathbf{n}\|$ to be of the order of $\sqrt{ n \sigma^2}$.
+Since the noise $$\mathbf{n}$$ is a i.i.d. Gaussian vector in $$\mathbb{R}^n$$ with marginal variance $$\sigma^2=10^{-4}$$, then we expect the $$\delta = \|\mathbf{n}\|$$ to be of the order of $$\sqrt{ n \sigma^2}$$.
 
-The figure above compares the norm of the misfit $\|F \mathbf{m}_\alpha - \mathbf{d} \|$ (blue line) with $\delta$ (read line). The Morozov's discrepancy principal then suggests that the optimal $\alpha$ is near $10^{-2}$ (i.e. where the two lines intersect).
+The figure above compares the norm of the misfit $$\|F \mathbf{m}_\alpha - \mathbf{d} \|$$ (blue line) with $$\delta$$ (read line). The Morozov's discrepancy principal then suggests that the optimal $$\alpha$$ is near $$10^{-2}$$ (i.e. where the two lines intersect).
 
 ### Question d
-Plot the  $L_2$ norm error in the reconstruction, $\|\mathbf{m}_{\text{true}}-\mathbf{m}_\alpha\|$, as a function of $\alpha$, where $\mathbf{m}_\alpha$ is the Tikhonov regularized solution. Which value of $\alpha$ (approximately) minimizes this error? Compare the *optimal* values of $\alpha$ obtained using the L-curve and Morozov's discrepancy criterion.
+Plot the  $$L_2$$ norm error in the reconstruction, $$\|\mathbf{m}_{\text{true}}-\mathbf{m}_\alpha\|$$, as a function of $$\alpha$$, where $$\mathbf{m}_\alpha$$ is the Tikhonov regularized solution. Which value of $$\alpha$$ (approximately) minimizes this error? Compare the *optimal* values of $$\alpha$$ obtained using the L-curve and Morozov's discrepancy criterion.
 
 
 ```python
@@ -707,12 +707,12 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_30_0.png)
 
 
-The $\alpha$ obtained using the Morozov's discrepancy principle is very close to the value of $\alpha$ that minimizes the reconstruction error in the $L^2(\Omega)$ norm. The $\alpha$ obtained using the L-curve criterion is smaller than the value of $\alpha$ that minimizes the reconstruction error in the $L^2(\Omega)$ norm, thus indicating that the L-curve criterion underestimates the amount of regularization necessary for solving this inverse problem.
+The $$\alpha$$ obtained using the Morozov's discrepancy principle is very close to the value of $$\alpha$$ that minimizes the reconstruction error in the $$L^2(\Omega)$$ norm. The $$\alpha$$ obtained using the L-curve criterion is smaller than the value of $$\alpha$$ that minimizes the reconstruction error in the $$L^2(\Omega)$$ norm, thus indicating that the L-curve criterion underestimates the amount of regularization necessary for solving this inverse problem.
 
-## Problem 3: Tikhonov regularization on the gradient of $m$
+## Problem 3: Tikhonov regularization on the gradient of $$m$$
 
-Consider the Tikhonov regularized solution $m_\alpha$ where we penalize the norm of the *gradient* of $m$.
-That is, $m_\alpha$ solves minimization problem
+Consider the Tikhonov regularized solution $$m_\alpha$$ where we penalize the norm of the *gradient* of $$m$$.
+That is, $$m_\alpha$$ solves minimization problem
 
 $$ \min_m \frac{1}{2} \int_0^L (\mathcal{F}\, m - d )^2 dx + \frac{\alpha}{2} \int_0^L m_x^2 \, dx. $$
 
@@ -791,7 +791,7 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_35_0.png)
 
 
-According to the Morozov's discrepancy principle, $\alpha$ should be chosen between $10^{-5}$ and $10^{-4}$.
+According to the Morozov's discrepancy principle, $$\alpha$$ should be chosen between $$10^{-5}$$ and $$10^{-4}$$.
 
 
 ```python
@@ -814,7 +814,7 @@ plt.show()
 ![png](inverseProblemPrototype_files/inverseProblemPrototype_37_0.png)
 
 
-According to the Morozov's discrepancy principle, $\alpha$ should be chosen between $10^{-7}$ and $10^{-5}$.
+According to the Morozov's discrepancy principle, $$\alpha$$ should be chosen between $$10^{-7}$$ and $$10^{-5}$$.
 
 Copyright &copy; 2018, The University of Texas at Austin & University of California, Merced. All Rights reserved. See file COPYRIGHT for details.
 

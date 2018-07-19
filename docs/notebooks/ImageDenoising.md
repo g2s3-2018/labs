@@ -3,9 +3,9 @@
 
 The problem of removing noise from an image without blurring
 sharp edges can be formulated as an infinite-dimensional minimization
-problem. Given a possibly noisy image $u_0(x,y)$ defined within a
-rectangular domain $\Omega$, we would like to
-find the image $u(x,y)$ that is closest in the $L_2$ sense, i.e. we
+problem. Given a possibly noisy image $$u_0(x,y)$$ defined within a
+rectangular domain $$\Omega$$, we would like to
+find the image $$u(x,y)$$ that is closest in the $$L_2$$ sense, i.e. we
 want to minimize 
 
 $$ \mathcal{F}_{LS} := \frac{1}{2}\int_\Omega (u - u_0)^2 \; d\boldsymbol{x}, $$
@@ -17,7 +17,7 @@ additional term in the objective, in the form of a penalty, i.e.,
 
 $$ \mathcal{R}_{TN} := \! \frac{\alpha}{2}\int_\Omega \nabla u
 \cdot \! \nabla u \; d\boldsymbol{x}, $$
-where $\alpha$ acts as a *diffusion* coefficient that controls
+where $$\alpha$$ acts as a *diffusion* coefficient that controls
 how strongly we impose the penalty, i.e. how much smoothing
 occurs. Unfortunately, if there are sharp edges in the image, this
 so-called *Tikhonov (TN) regularization* will blur them. Instead,
@@ -29,14 +29,14 @@ u)^{\frac{1}{2}} \; d\boldsymbol{x} $$
 
 where (we will see that) taking the square root is the key to
 preserving edges. Since 
-$\mathcal{R}_{TV}$ is not differentiable when $\nabla u =
-\boldsymbol{0}$, it is usually modified to include a positive parameter
-$\varepsilon$ as follows:
+$$\mathcal{R}_{TV}$$ is not differentiable when $$\nabla u =
+\boldsymbol{0}$$, it is usually modified to include a positive parameter
+$$\varepsilon$$ as follows:
 
 $$ \mathcal{R}^{\varepsilon}_{TV} := \!  \alpha \int_\Omega (\nabla u \cdot
 \! \nabla u + \varepsilon)^{\frac{1}{2}} \; d\boldsymbol{x}. $$
 We wish to study the performance of the two denoising functionals
-$\mathcal{F}_{TN}$ and $\mathcal{F}^{\varepsilon}_{TV}$, where
+$$\mathcal{F}_{TN}$$ and $$\mathcal{F}^{\varepsilon}_{TV}$$, where
 
 $$ \mathcal{F}_{TN}  := \mathcal{F}_{LS} + \mathcal{R}_{TN} $$
 and
@@ -44,7 +44,7 @@ and
 $$ \mathcal{F}^{\varepsilon}_{TV}  := \mathcal{F}_{LS} + \mathcal{R}^{\varepsilon}_{TV}. $$
 
 We prescribe the homogeneous Neumann condition 
-$\nabla u \cdot \boldsymbol{n}=0$ on the four sides of the square,
+$$\nabla u \cdot \boldsymbol{n}=0$$ on the four sides of the square,
 which amounts to assuming that the image intensity does not change
 normal to the boundary of the image. 
 
@@ -119,15 +119,15 @@ plt.show()
 
 ## 2. The misfit functional and the true error functional
 
-Here we describe the variational forms for the $L_2$ misfit functional
+Here we describe the variational forms for the $$L_2$$ misfit functional
 $$ \mathcal{F}_{LS} := \frac{1}{2}\int_\Omega (u - u_0)^2 \; d\boldsymbol{x}, $$
 and its first and second variations.
 
 Since we also know the true image `u_true` (*this will not be the case for real applications*)
-we can also write the true $L_2$ error functional 
+we can also write the true $$L_2$$ error functional 
 $$ \mathcal{F}_{\rm true} := \frac{1}{2}\int_\Omega (u - u_{\rm true})^2 \; d\boldsymbol{x}. $$
 
-Finally, we define some values of $\alpha$ ($\alpha = 10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}$) for the choice of the regularization paramenter.
+Finally, we define some values of $$\alpha$$ ($$\alpha = 10^{-1}, 10^{-2}, 10^{-3}, 10^{-4}$$) for the choice of the regularization paramenter.
 
 
 ```python
@@ -147,17 +147,17 @@ alphas = np.power(10., -np.arange(1, n_alphas+1))
 
 ## 3. Tikhonov regularization
 
-The function `TNsolution` computes the solution of the denoising inverse problem using Tikhonov regularization for a given amount a regularization $\alpha$.
+The function `TNsolution` computes the solution of the denoising inverse problem using Tikhonov regularization for a given amount a regularization $$\alpha$$.
 
 More specifically it minimizes the functional
 $$ \mathcal{F}_{TN}(u) = \frac{1}{2}\int_\Omega (u - u_0)^2 \; d\boldsymbol{x} + \frac{\alpha}{2}\int_\Omega \nabla u \cdot \nabla u d\boldsymbol{x}. $$
 
-The first variation of $\mathcal{F}_{TN}$ reads
+The first variation of $$\mathcal{F}_{TN}$$ reads
 $$ \delta_u \mathcal{F}_{TN}(u, \hat{u}) = \int_\Omega (u - u_0) \hat{u} \; d\boldsymbol{x} + \alpha \int_\Omega \nabla u \cdot \nabla \hat{u}  d\boldsymbol{x}, $$
 and the second variation is
 $$ \delta_u^2 \mathcal{F}_{TN}(u, \hat{u}, \tilde{u}) = \int_\Omega \tilde{u}\, \hat{u} \; d\boldsymbol{x} + \alpha \int_\Omega \nabla \tilde{u} \cdot \nabla \hat{u}\, d\boldsymbol{x}. $$
 
-The best reconstruction of the original image is obtained for $\alpha = 10^{-3}$, however we notice that the sharp edges of the image are lost in the reconstruction.
+The best reconstruction of the original image is obtained for $$\alpha = 10^{-3}$$, however we notice that the sharp edges of the image are lost in the reconstruction.
 
 
 ```python
@@ -211,25 +211,25 @@ for alpha in alphas:
 
 ## 4. Total Variation regularization
 
-The function `TVsolution` computes the solution of the denoising inverse problem using Total Variation regularization for a given amount a regularization $\alpha$ and perturbation $\varepsilon$.
+The function `TVsolution` computes the solution of the denoising inverse problem using Total Variation regularization for a given amount a regularization $$\alpha$$ and perturbation $$\varepsilon$$.
 
 More specifically it minimizes the functional
 $$ \mathcal{F}_{TV}(u) = \frac{1}{2}\int_\Omega (u - u_0)^2 \; d\boldsymbol{x} + \frac{\alpha}{2}\int_\Omega \left( \nabla u \cdot \nabla u + \varepsilon \right)^{\frac{1}{2}} d\boldsymbol{x}. $$
 
-The first variation of $\mathcal{F}_{TV}$ reads
+The first variation of $$\mathcal{F}_{TV}$$ reads
 $$ \delta_u \mathcal{F}_{TV}(u, \hat{u}) = \int_\Omega (u - u_0)\hat{u}  \; d\boldsymbol{x} + \alpha \int_\Omega \frac{1}{\left( \nabla u \cdot \nabla u + \varepsilon \right)^{\frac{1}{2}}}\nabla u \cdot \nabla \hat{u}  d\boldsymbol{x}, $$
 and the second variation is
 $$ \delta_u^2 \mathcal{F}_{TV}(u, \hat{u}, \tilde{u}) = \int_\Omega \tilde{u} \hat{u} \; d\boldsymbol{x} + \alpha \int_\Omega \frac{1}{\left( \nabla u \cdot \nabla u + \varepsilon \right)^{\frac{1}{2}}} \left[ \left( I - \frac{\nabla u \otimes \nabla u}{\nabla u \cdot \nabla u + \varepsilon}\right) \nabla \tilde{u}\right] \cdot \nabla \hat{u} d\boldsymbol{x}. $$
 
-The highly nonlinear term $\left( I - \frac{\nabla u \otimes \nabla u}{\nabla u \cdot \nabla u + \varepsilon}\right) $ in the second variation poses a substantial challange for the convergence of the Newton's method. In fact, the converge radius of the Newtos's method is extremely small.
+The highly nonlinear term $$\left( I - \frac{\nabla u \otimes \nabla u}{\nabla u \cdot \nabla u + \varepsilon}\right) $$ in the second variation poses a substantial challange for the convergence of the Newton's method. In fact, the converge radius of the Newtos's method is extremely small.
 For this reason in the following we will replace the second variation with the variational form
 $$ H_{\rm approx} = \int_\Omega \tilde{u}\,\hat{u} \; d\boldsymbol{x} + \alpha \int_\Omega \frac{1}{\left( \nabla u \cdot \nabla u + \varepsilon \right)^{\frac{1}{2}}} \nabla \tilde{u} \cdot \nabla \hat{u} d\boldsymbol{x}. $$
 
-> For small values of $\varepsilon$, there are more efficient methods for solving TV-regularized inverse problems than the basic Newton method we use here; in particular, so-called primal-dual Newton methods are preferred (see T.F. Chan, G.H. Golub, and P. Mulet, *A nonlinear primal-dual method for total variation-based image restoration*, SIAM Journal on Scientific Computing, 20(6):1964–1977, 1999). The efficient solution of TV-regularized inverse problems is still an active field of research.
+> For small values of $$\varepsilon$$, there are more efficient methods for solving TV-regularized inverse problems than the basic Newton method we use here; in particular, so-called primal-dual Newton methods are preferred (see T.F. Chan, G.H. Golub, and P. Mulet, *A nonlinear primal-dual method for total variation-based image restoration*, SIAM Journal on Scientific Computing, 20(6):1964–1977, 1999). The efficient solution of TV-regularized inverse problems is still an active field of research.
 
-The resulting method will exhibit only a first order convergence rate but it will be more robust for small values of $\varepsilon$.
+The resulting method will exhibit only a first order convergence rate but it will be more robust for small values of $$\varepsilon$$.
 
-The best reconstruction of the original image is obtained for $\alpha = 10^{-2}$. We also notice that Total Variation does a much better job that Tikhonov regularization in preserving the sharp edges of the original image.
+The best reconstruction of the original image is obtained for $$\alpha = 10^{-2}$$. We also notice that Total Variation does a much better job that Tikhonov regularization in preserving the sharp edges of the original image.
 
 
 ```python
@@ -303,32 +303,32 @@ for alpha in alphas:
 ## Hands on
 
 #### Question 1
-> For both $\mathcal{R}_{TN}$ and $\mathcal{R}^\varepsilon_{TV}$, derive gradients and Hessians using calculus of variations, in both weak form and strong form.
+> For both $$\mathcal{R}_{TN}$$ and $$\mathcal{R}^\varepsilon_{TV}$$, derive gradients and Hessians using calculus of variations, in both weak form and strong form.
 
->> **Hint**: To derive the Hessian of $\mathcal{R}^\varepsilon_{TV}$, recall the identity $(\mathbf{a} \cdot \mathbf{b})\mathbf{c} = (\mathbf{c}\mathbf{a}^T )\mathbf{b}$, where $\mathbf{a}, \mathbf{b}, \mathbf{c} \in \mathbb{R}^n$, and $\mathbf{a} \cdot \mathbf{b} \in \mathbb{R}$ is the inner product and $\mathbf{c}\mathbf{a}^T \in \mathbb{R}^{n\times n}$ is a matrix of rank one.
+>> **Hint**: To derive the Hessian of $$\mathcal{R}^\varepsilon_{TV}$$, recall the identity $$(\mathbf{a} \cdot \mathbf{b})\mathbf{c} = (\mathbf{c}\mathbf{a}^T )\mathbf{b}$$, where $$\mathbf{a}, \mathbf{b}, \mathbf{c} \in \mathbb{R}^n$$, and $$\mathbf{a} \cdot \mathbf{b} \in \mathbb{R}$$ is the inner product and $$\mathbf{c}\mathbf{a}^T \in \mathbb{R}^{n\times n}$$ is a matrix of rank one.
 
 ---
 
 #### Question 2
->Show that when $\nabla u$ is zero, $\mathcal{R}_{TV}$ is not differentiable, but $\mathcal{R}^\varepsilon_{TV}$ is.
+>Show that when $$\nabla u$$ is zero, $$\mathcal{R}_{TV}$$ is not differentiable, but $$\mathcal{R}^\varepsilon_{TV}$$ is.
 
 ---
 
 #### Question 3
-> Derive expressions for the two eigenvalues and corresponding eigenvectors of the tensor diffusion coefficient $A=\left( I - \frac{\nabla u \otimes \nabla u}{\nabla u \cdot \nabla u + \varepsilon}\right)$ that appears in the Hessian of the $\mathcal{R}^{\varepsilon}_{TV}$ functional. Based on these expressions, give an explanation of why $\mathcal{R}^{\varepsilon}_{TV}$ is effective at preserving sharp TV edges in the image, while $\mathcal{R}_{TN}$ is not. Consider a single Newton step for this argument.
+> Derive expressions for the two eigenvalues and corresponding eigenvectors of the tensor diffusion coefficient $$A=\left( I - \frac{\nabla u \otimes \nabla u}{\nabla u \cdot \nabla u + \varepsilon}\right)$$ that appears in the Hessian of the $$\mathcal{R}^{\varepsilon}_{TV}$$ functional. Based on these expressions, give an explanation of why $$\mathcal{R}^{\varepsilon}_{TV}$$ is effective at preserving sharp TV edges in the image, while $$\mathcal{R}_{TN}$$ is not. Consider a single Newton step for this argument.
 
 ---
 
 #### Question 4
-> Show that for large enough $\varepsilon$, $\mathcal{R}^{\varepsilon}_{TV}$ behaves like $\mathcal{R}_{TN}$, and for $\varepsilon = 0$, the Hessian of $\mathcal{R}^{\varepsilon}_{TV}$ is singular. This suggests that $\varepsilon$ should be chosen small enough that edge preservation is not lost, but not too small that ill-conditioning occurs.
+> Show that for large enough $$\varepsilon$$, $$\mathcal{R}^{\varepsilon}_{TV}$$ behaves like $$\mathcal{R}_{TN}$$, and for $$\varepsilon = 0$$, the Hessian of $$\mathcal{R}^{\varepsilon}_{TV}$$ is singular. This suggests that $$\varepsilon$$ should be chosen small enough that edge preservation is not lost, but not too small that ill-conditioning occurs.
 
 ---
 
 #### Question 5
-> Solve the denoising inverse problem defined above using TV regularization for $\alpha = 10^{-2}$ and different values of $\varepsilon$ (e.g., from $10$ to $10^{−4}$).
-How does the number of nonlinear iterations behave for decreasing $\varepsilon$? Try to explain this behavior based on your answer to Question 4.
+> Solve the denoising inverse problem defined above using TV regularization for $$\alpha = 10^{-2}$$ and different values of $$\varepsilon$$ (e.g., from $$10$$ to $$10^{−4}$$).
+How does the number of nonlinear iterations behave for decreasing $$\varepsilon$$? Try to explain this behavior based on your answer to Question 4.
 
-The number of nonlinear interations increases as we decrease $\varepsilon$. In fact, as we decrease $\varepsilon$ the the $\mathcal{R}^{\varepsilon}_{TV}$ becomes more nonlinear and its Hessian becomes more and more ill-conditioned.
+The number of nonlinear interations increases as we decrease $$\varepsilon$$. In fact, as we decrease $$\varepsilon$$ the the $$\mathcal{R}^{\varepsilon}_{TV}$$ becomes more nonlinear and its Hessian becomes more and more ill-conditioned.
 
 
 ```python

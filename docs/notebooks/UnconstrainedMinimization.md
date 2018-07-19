@@ -3,11 +3,11 @@
 
 In this example we solve the following nonlinear minimization problem
 
-*Find * $u^* \in H^1_0(\Omega)$ *such that*
+*Find * $$u^* \in H^1_0(\Omega)$$ *such that*
 
 $$ u^* = \operatorname*{argmin}_{u \in H^1_0(\Omega)} \Pi(u). $$
 
-Here the energy functional $\Pi(u)$ has the form
+Here the energy functional $$\Pi(u)$$ has the form
 
 $$ \Pi(u) = \frac{1}{2} \int_\Omega k(u) \nabla u \cdot \nabla u \, dx - \int_\Omega f\,u \, dx,$$
 
@@ -17,17 +17,17 @@ $$k(u) = k_1 + k_2 u^2. $$
 
 ## Necessary optimality condition (Euler-Lagrange condition)
 
-Let $\delta_u \Pi(u, \hat{u})$ denote the first variation of $\Pi(u)$ in the *direction* $\hat{u}$, i.e.
+Let $$\delta_u \Pi(u, \hat{u})$$ denote the first variation of $$\Pi(u)$$ in the *direction* $$\hat{u}$$, i.e.
 
 $$\delta_u \Pi(u, \hat{u}) := \left. \frac{d}{d \varepsilon} \Pi(u + \varepsilon \hat{u})\right|_{\varepsilon=0} = \lim_{\varepsilon \rightarrow 0} \frac{\Pi(u + \varepsilon \hat{u}) - \Pi(u)}{\varepsilon}.$$
 
-The necessary condition is that the first variation of $\Pi(u)$ equals to 0 for all directions $\hat{u}$:
+The necessary condition is that the first variation of $$\Pi(u)$$ equals to 0 for all directions $$\hat{u}$$:
 
 $$ \delta_u \Pi = 0 \Longleftrightarrow \lim_{\varepsilon \rightarrow 0} \frac{\Pi(u + \varepsilon \hat{u}) - \Pi(u)}{\varepsilon} = 0 \quad \forall \hat{u} \in H_0^1(\Omega).$$
 
 ### Weak form:
 
-To obtain the weak form of the above necessary condition, we first expand the term $\Pi(u + \varepsilon \hat{u})$ as
+To obtain the weak form of the above necessary condition, we first expand the term $$\Pi(u + \varepsilon \hat{u})$$ as
 
 $$\Pi(u + \varepsilon \hat{u}) = \frac{1}{2} \int_\Omega [k_1 + k_2(u + \varepsilon\hat{u})^2] (\nabla u + \varepsilon \nabla \hat{u})\cdot(\nabla u + \varepsilon \nabla \hat{u}) dx - \int_\Omega f\,(u+\varepsilon\hat{u}) dx.$$
 
@@ -35,9 +35,9 @@ After some simplification, we obtain
 
 $$\frac{\Pi(u + \varepsilon \hat{u}) - \Pi(u)}{\epsilon} = \int_\Omega \left[k_2 u \hat{u} \nabla u \cdot \nabla u + (k_1 + k_2u^2)\nabla \hat{u}\cdot \nabla u\right] dx - \int_\Omega f \hat{u} dx + \mathcal{O}(\epsilon).$$
 
-By neglecting the $\mathcal{O}(\epsilon)$ terms, we write the weak form of the necessary conditions as
+By neglecting the $$\mathcal{O}(\epsilon)$$ terms, we write the weak form of the necessary conditions as
 
-*Find *$u\in H_0^1(\Omega)$ *such that*
+*Find *$$u\in H_0^1(\Omega)$$ *such that*
 
 $$ \int_\Omega \left[k_2 u \hat{u} \nabla u \cdot \nabla u + (k_1 + k_2u^2)\nabla \hat{u}\cdot \nabla u\right] dx = \int_\Omega f \hat{u} dx \quad \forall \hat{u} \in H_0^1.$$
 
@@ -46,14 +46,14 @@ To obtain the strong form, we invoke Green's first identity and write
 
 $$ \int_\Omega \left[k_2 u \nabla u \cdot \nabla u -  \nabla \cdot [(k_1 + k_2u^2) \nabla u] \right] \hat{u} dx + \int_{\partial \Omega} [(k_1 + k_2u^2) \nabla u]\cdot n \hat{u} ds = \int_\Omega f \hat{u} dx \quad \forall \hat{u} \in H_0^1.$$
 
-Since $\hat{u}$ is arbitrary in $\Omega$ and $\hat{u} = 0$ on $\partial \Omega$, the strong form of the non-linear boundary problem reads
+Since $$\hat{u}$$ is arbitrary in $$\Omega$$ and $$\hat{u} = 0$$ on $$\partial \Omega$$, the strong form of the non-linear boundary problem reads
 
 $$ - \nabla \cdot [(k_1 + k_2u^2) \nabla u + k_2 u \nabla u \cdot \nabla u = f \quad {\rm in} \; \Omega; $$
 $$ u = 0 \quad {\rm on} \; \partial\Omega.$$
 
 ## Infinite-dimensional Newton's Method
 
-Consider the expansion of the first variation $\delta_u \Pi(u, \hat{u})$ about $u$ in a *direction* $\tilde{u}$
+Consider the expansion of the first variation $$\delta_u \Pi(u, \hat{u})$$ about $$u$$ in a *direction* $$\tilde{u}$$
 
 $$\delta_u \Pi(u+\tilde{u}, \hat{u}) \approx \delta_u \Pi(u, \hat{u}) + \delta_u^2\Pi(u, \hat{u}, \tilde{u}),$$
 
@@ -63,16 +63,16 @@ $$ \delta_u^2\Pi(u, \hat{u}, \tilde{u}) = \left. \frac{d}{d\varepsilon} \delta_u
 
 The infinite-dimensional Newton's method reads
 
-*Given the current solution *$u_k$, *find* $\tilde{u} \in H^1_0$ *such that*
+*Given the current solution *$$u_k$$, *find* $$\tilde{u} \in H^1_0$$ *such that*
 
 $$ \delta_u^2 \Pi(u_k, \hat{u}, \tilde{u}) = -\delta_u \Pi(u_k, \hat{u}) \quad \forall \, \hat{u} \in H_0^1.$$
 
-*Update the solution using the Newton direction* $\tilde{u}$
+*Update the solution using the Newton direction* $$\tilde{u}$$
 $$ u_{k+1} = u_k + \tilde{u}.$$
 
 ### Hessian
 
-To derive the weak form of the Hessian, we first expand the term $\delta_u \Pi(u +\varepsilon \tilde{u},\hat{u})$ as
+To derive the weak form of the Hessian, we first expand the term $$\delta_u \Pi(u +\varepsilon \tilde{u},\hat{u})$$ as
 
 $$\delta_u \Pi(u+\varepsilon\tilde{u}, \hat{u}) = \int_\Omega \left[k_2 (u+\varepsilon\tilde{u}) \hat{u} \nabla (u+\varepsilon\tilde{u}) \cdot \nabla (u+\varepsilon\tilde{u}) + (k_1 + k_2(u+\varepsilon\tilde{u})^2)\nabla \hat{u}\cdot \nabla (u+\varepsilon\tilde{u}) \right] dx - \int_\Omega f \hat{u} dx \quad \forall \hat{u} \in H_0^1.$$
 
@@ -83,15 +83,15 @@ $$\delta^2 \Pi(u, \tilde{u}, \hat{u}) := \frac{d}{d\varepsilon} \delta_u \Pi(u+\
 
 ### Weak form of Newton step:
 
-*Given *$u \in H_0^1$, *find * $\tilde{u} \in H^1_0$ *such that*
+*Given *$$u \in H_0^1$$, *find * $$\tilde{u} \in H^1_0$$ *such that*
 
 $$\int_\Omega \left[k_2\tilde{u}\hat{u}\nabla u \cdot \nabla u + 2k_2 u \hat{u} \nabla \tilde{u} \cdot \nabla u + 2k_2 u \tilde{u} \nabla \hat{u} \cdot \nabla u + (k_1 + k_2u^2) \nabla \hat{u} \cdot \nabla \tilde{u} \right] dx = - \int_\Omega \left[k_2 u \hat{u} \nabla u \cdot \nabla u + (k_1 + k_2u^2)\nabla \hat{u}\cdot \nabla u -f \hat{u} \right] dx \quad \forall \, \hat{u} \in H_0^1. $$
 
-The solution is then updated using the Newton direction $\tilde{u}$
+The solution is then updated using the Newton direction $$\tilde{u}$$
 
 $$ u^{\rm new} = u + \alpha \tilde{u}.$$
 
-Here $\alpha$ denotes a relaxation parameter (back-tracking/line-search) used to achieve global convergence of the Newton method.
+Here $$\alpha$$ denotes a relaxation parameter (back-tracking/line-search) used to achieve global convergence of the Newton method.
 
 ### Strong form of the Newton step
 
@@ -133,15 +133,15 @@ dl.set_log_active(False)
 
 ## 2. Define the mesh and finite element spaces
 
-We construct a triangulation (mesh) $\mathcal{T}_h$ of the computational domain $\Omega := [0, 1]^2$ with `nx` elements in the *x*-axis direction and `ny` elements in the *y*-axis direction.
+We construct a triangulation (mesh) $$\mathcal{T}_h$$ of the computational domain $$\Omega := [0, 1]^2$$ with `nx` elements in the *x*-axis direction and `ny` elements in the *y*-axis direction.
 
-On the mesh $\mathcal{T}_h$, we then define the finite element space $V_h \subset H^1(\Omega)$ consisting of globally continuous piecewise linear functions and we create a function $u \in V_h$.
+On the mesh $$\mathcal{T}_h$$, we then define the finite element space $$V_h \subset H^1(\Omega)$$ consisting of globally continuous piecewise linear functions and we create a function $$u \in V_h$$.
 
-By denoting by $\left[{\phi_i(x)}\right]_{i=1}^{ {\rm dim}(V_h)}$ the finite element basis for the space $V_h$ we have
+By denoting by $$\left[{\phi_i(x)}\right]_{i=1}^{ {\rm dim}(V_h)}$$ the finite element basis for the space $$V_h$$ we have
 $$ u = \sum_{i=1}^{ {\rm dim}(V_h)} {\rm u}_i \phi_i(x), $$
-where ${\rm u}_i$ represents the coefficients in the finite element expansion of $u$.
+where $${\rm u}_i$$ represents the coefficients in the finite element expansion of $$u$$.
 
-Finally we define two special types of functions: the `TestFunction` $\hat{u}$ and the `TrialFunction` $\tilde{u}$. These special types of functions are used by `FEniCS` to generate the finite element vectors and matrices which stem from the first and second variations of the energy functional $\Pi$.
+Finally we define two special types of functions: the `TestFunction` $$\hat{u}$$ and the `TrialFunction` $$\tilde{u}$$. These special types of functions are used by `FEniCS` to generate the finite element vectors and matrices which stem from the first and second variations of the energy functional $$\Pi$$.
 
 
 ```python
@@ -170,7 +170,7 @@ print( "dim(Vh) = ", Vh.dim() )
 We now define the energy functional
 $$ \Pi(u) = \frac{1}{2} \int_\Omega (k_1 + k_2u^2) \nabla u \cdot \nabla u dx - \int_\Omega f\,u dx.$$
 
-The parameters $k_1$, $k_2$ and the forcing term $f$ are defined in FEniCS using the keyword [`Constant`](https://fenicsproject.org/olddocs/dolfin/2017.2.0/python/programmers-reference/functions/constant/Constant.html). To define coefficients that are space dependent one should use the keyword [`Expression`](https://fenicsproject.org/olddocs/dolfin/2017.2.0/python/programmers-reference/functions/expression/Expression.html).
+The parameters $$k_1$$, $$k_2$$ and the forcing term $$f$$ are defined in FEniCS using the keyword [`Constant`](https://fenicsproject.org/olddocs/dolfin/2017.2.0/python/programmers-reference/functions/constant/Constant.html). To define coefficients that are space dependent one should use the keyword [`Expression`](https://fenicsproject.org/olddocs/dolfin/2017.2.0/python/programmers-reference/functions/expression/Expression.html).
 
 The Dirichlet boundary condition
 $$ u = 0 \quad {\rm on} \; \partial\Omega$$
@@ -182,7 +182,7 @@ To construct this object we need to provide
 
 - the value `u_0` of the solution at the Dirichlet boundary. `u_0` can either be a `Constant` or an `Expression` object.
 
-- the object `Boundary` that defines on which part of $\partial \Omega$ we want to impose such condition.
+- the object `Boundary` that defines on which part of $$\partial \Omega$$ we want to impose such condition.
 
 
 ```python
@@ -209,10 +209,10 @@ $$\delta_u \Pi(u, \hat{u}) = \int_\Omega \left[k_2 u \hat{u} \nabla u \cdot \nab
 We use a **finite difference check** to verify that our derivation is correct.
 More specifically, we consider a function
 $$ u_0 = x(x-1)y(y-1) \in H^1_0(\Omega) $$
-and we verify that for a random direction $\hat{u} \in H^1_0(\Omega)$ we have
+and we verify that for a random direction $$\hat{u} \in H^1_0(\Omega)$$ we have
 $$ r := \left| \frac{\Pi(u_0 + \varepsilon \hat{u}) - \Pi(u_0)}{\varepsilon} - \delta_u \Pi(u, \hat{u})\right| = \mathcal{O}(\varepsilon).$$
 
-In the figure below we show in a loglog scale the value of $r$ as a function of $\varepsilon$. We observe that $r$ decays linearly for a wide range of values of $\varepsilon$, however we notice an increase in the error for extremely small values of $\varepsilon$ due to numerical stability and finite precision arithmetic.
+In the figure below we show in a loglog scale the value of $$r$$ as a function of $$\varepsilon$$. We observe that $$r$$ decays linearly for a wide range of values of $$\varepsilon$$, however we notice an increase in the error for extremely small values of $$\varepsilon$$ due to numerical stability and finite precision arithmetic.
 
 **NOTE:** To compute the first variation we can also use the [automatic differentiation](https://fenicsproject.org/olddocs/dolfin/2017.2.0/python/programmers-reference/fem/formmanipulations/derivative.html#dolfin.fem.formmanipulations.derivative) of variational forms capabilities of FEniCS and write
 
@@ -266,10 +266,10 @@ The weak form of the second variation reads
 $$\delta_u^2 \Pi(u, \tilde{u}, \hat{u}) := \frac{d}{d\varepsilon} \delta_u \Pi(u+\varepsilon\tilde{u}, \hat{u}) = 
 \int_\Omega \left[k_2\tilde{u}\hat{u}\nabla u \cdot \nabla u + 2k_2 u \hat{u} \nabla \tilde{u} \cdot \nabla u + 2k_2 u \tilde{u} \nabla \hat{u} \cdot \nabla u + (k_1 + k_2u^2) \nabla \hat{u} \cdot \nabla \tilde{u} \right] dx. $$
 
-As before, we verify that for a random direction $\hat{u} \in H^1_0(\Omega)$ we have
+As before, we verify that for a random direction $$\hat{u} \in H^1_0(\Omega)$$ we have
 $$ r := \left\| \frac{\delta_u\Pi(u_0 + \varepsilon \tilde{u}, \hat{u}) - \delta_u \Pi(u_0, \hat{u})}{\varepsilon} - \delta_u^2 \Pi(u, \tilde{u}, \hat{u})\right\| = \mathcal{O}(\varepsilon).$$
 
-In the figure below we show in a loglog scale the value of $r$ as a function of $\varepsilon$. As before, we observe that $r$ decays linearly for a wide range of values of $\varepsilon$, however we notice an increase in the error for extremely small values of $\varepsilon$ due to numerical stability and finite precision arithmetic.
+In the figure below we show in a loglog scale the value of $$r$$ as a function of $$\varepsilon$$. As before, we observe that $$r$$ decays linearly for a wide range of values of $$\varepsilon$$, however we notice an increase in the error for extremely small values of $$\varepsilon$$ due to numerical stability and finite precision arithmetic.
 
 **NOTE:** To compute the second variation we can also use automatic differentiation and write
 
@@ -313,19 +313,19 @@ plt.show()
 
 The infinite dimensional Newton step reads
 
-*Given *$u_n \in H_0^1$, *find * $\tilde{u} \in H^1_0$ *such that*
+*Given *$$u_n \in H_0^1$$, *find * $$\tilde{u} \in H^1_0$$ *such that*
 $$ \delta_u^2 \Pi(u_n, \hat{u}, \tilde{u}) =  - \delta_u \Pi(u_n, \hat{u}) \quad $$
-Update the solution $u_{n+1}$ using the Newton direction $\tilde{u}$
+Update the solution $$u_{n+1}$$ using the Newton direction $$\tilde{u}$$
 $$ u_{n+1} = u + \alpha \tilde{u}.$$
 
-Here, for simplicity, we choose $\alpha$ equal to 1. In general, to guarantee global convergence of the Newton method the parameter $\alpha$ should be appropriately chosen (e.g. *back-tracking* or *line search*).
+Here, for simplicity, we choose $$\alpha$$ equal to 1. In general, to guarantee global convergence of the Newton method the parameter $$\alpha$$ should be appropriately chosen (e.g. *back-tracking* or *line search*).
 
 The linear systems to compute the Newton directions are solved using the conjugate gradient (CG) with algebraic multigrid preconditioner with a fixed tolerance. In practice, one should solve the Newton system inexactly by early termination of CG 
 iterations via Eisenstat–Walker (to prevent oversolving) and Steihaug (to avoid negative curvature) criteria.
 
-In the output below, for each iteration we report the number of CG iterations, the value of the energy functional, the norm of the gradient, and the inner product between the gradient and the Newton direction $\delta_u \Pi(u_0, \tilde{u})$.
+In the output below, for each iteration we report the number of CG iterations, the value of the energy functional, the norm of the gradient, and the inner product between the gradient and the Newton direction $$\delta_u \Pi(u_0, \tilde{u})$$.
 
-In the example, the stopping criterion is relative norm of the gradient $\frac{\delta_u \Pi(u_n, \hat{u})}{\delta_u \Pi(u_0, \hat{u})} \leq \tau$. However robust implementation of the stopping criterion should monitor also the quantity $\delta_u \Pi(u_0, \tilde{u})$.
+In the example, the stopping criterion is relative norm of the gradient $$\frac{\delta_u \Pi(u_n, \hat{u})}{\delta_u \Pi(u_0, \hat{u})} \leq \tau$$. However robust implementation of the stopping criterion should monitor also the quantity $$\delta_u \Pi(u_0, \tilde{u})$$.
 
 
 ```python
@@ -435,7 +435,7 @@ plt.show()
 
 Consider the following nonlinear minimization problem
 
-*Find * $u^* \in H^1(\Omega)$ *such that*
+*Find * $$u^* \in H^1(\Omega)$$ *such that*
 
 $$ u^* = \operatorname*{argmin}_{u \in H^1(\Omega)} \Pi(u), $$
 
@@ -447,15 +447,15 @@ $$ \Pi(u) = \frac{1}{2} \int_\Omega |\nabla u|^2 \, dx + \int_\Omega e^{-u} \, d
 
 > Derive the first-order necessary condition for optimality using calculus of variations, in both weak and strong form.
 
-Let $\delta_u \Pi(u, \hat{u})$ denote the first variation of $\Pi(u)$ in the *direction* $\hat{u}$, i.e.
+Let $$\delta_u \Pi(u, \hat{u})$$ denote the first variation of $$\Pi(u)$$ in the *direction* $$\hat{u}$$, i.e.
 
 $$\delta_u \Pi(u, \hat{u}) := \left. \frac{d}{d \varepsilon} \Pi(u + \varepsilon \hat{u})\right|_{\varepsilon=0} = \lim_{\varepsilon \rightarrow 0} \frac{\Pi(u + \varepsilon \hat{u}) - \Pi(u)}{\varepsilon}.$$
 
-The necessary condition is that the first variation of $\Pi(u)$ equals to 0 for all directions $\hat{u}$:
+The necessary condition is that the first variation of $$\Pi(u)$$ equals to 0 for all directions $$\hat{u}$$:
 
 $$ \delta_u \Pi = 0 \Longleftrightarrow \lim_{\varepsilon \rightarrow 0} \frac{\Pi(u + \varepsilon \hat{u}) - \Pi(u)}{\varepsilon} = 0 \quad \forall \hat{u} \in H^1(\Omega).$$
 
-To obtain the weak form of the above necessary condition, we first expand the term $\Pi(u + \varepsilon \hat{u})$ as
+To obtain the weak form of the above necessary condition, we first expand the term $$\Pi(u + \varepsilon \hat{u})$$ as
 
 $$\Pi(u + \varepsilon \hat{u}) = \frac{1}{2} \int_\Omega (\nabla u + \varepsilon \nabla \hat{u})\cdot(\nabla u + \varepsilon \nabla \hat{u}) dx + \int_\Omega e^{-(u+\varepsilon\hat{u})} dx + \frac{1}{2}\int_{\partial \Omega} (u+\varepsilon\hat{u})^2 \, ds .$$
 
@@ -463,9 +463,9 @@ Then, we have
 
 $$ \frac{d}{d \varepsilon} \Pi(u + \varepsilon \hat{u}) = \int_\Omega (\nabla u + \varepsilon \nabla \hat{u})\cdot \nabla \hat{u}\, dx + \int_\Omega e^{-(u+\varepsilon\hat{u})}(-\hat{u})\, dx + \int_{\partial \Omega} (u+\varepsilon\hat{u})\hat{u} \, ds.$$
 
-After setting $\varepsilon = 0$, we write the weak form of the necessary conditions as
+After setting $$\varepsilon = 0$$, we write the weak form of the necessary conditions as
 
-*Find *$u\in H^1(\Omega)$ *such that*
+*Find *$$u\in H^1(\Omega)$$ *such that*
 
 $$ \int_\Omega \nabla u \cdot\nabla \hat{u}\, dx - \int_\Omega e^{-u}\,\hat{u}\, dx + 
 \int_{\partial \Omega} u \, \hat{u} \, ds = 0 \quad \forall \hat{u} \in H^1.$$
@@ -474,19 +474,19 @@ To obtain the strong form, we invoke Green's first identity and write
 
 $$ - \int_\Omega \Delta u \, \hat{u}\, dx + \int_{\partial\Omega} (\nabla u \cdot \boldsymbol{n})\, \hat{u}\,dx - \int_\Omega e^{-u}\,\hat{u}\, dx + \int_{\partial \Omega} u \, \hat{u} \, ds= 0 \quad \forall \hat{u} \in H^1.$$
 
-Since $\hat{u}$ is arbitrary in $\Omega$ and on $\partial \Omega$, the strong form of the non-linear boundary problem reads
+Since $$\hat{u}$$ is arbitrary in $$\Omega$$ and on $$\partial \Omega$$, the strong form of the non-linear boundary problem reads
 
 $$ - \Delta u - e^{-u} = 0 \quad {\rm in} \; \Omega; $$
 $$ \nabla u \cdot \boldsymbol{n} + u = 0 \quad {\rm on} \; \partial\Omega.$$
 
-> Note: The boundary condition $\nabla u \cdot \boldsymbol{n} + u = 0$ is a *Robin* type boundary condition.
+> Note: The boundary condition $$\nabla u \cdot \boldsymbol{n} + u = 0$$ is a *Robin* type boundary condition.
 
 
 ### Question 2
 
 > Derive the infinite-dimensional Newton step, in both weak and strong form.
 
-To derive the infinite-dimensional Newton step, we first compute the second variation of $\Pi$, that is
+To derive the infinite-dimensional Newton step, we first compute the second variation of $$\Pi$$, that is
 
 $$ \delta^2_{uu} \Pi(u,\hat{u},\tilde{u}) = \left. \frac{d}{d\varepsilon}\left[\delta_u \Pi(u +\varepsilon \tilde{u},\hat{u})\right]\right|_{\varepsilon=0}.$$
 
@@ -497,16 +497,16 @@ $$\delta^2 \Pi(u, \tilde{u}, \hat{u}) = \int_\Omega \nabla \tilde{u} \cdot\nabla
 
 The weak form of Newton step then reads
 
-*Given *$u^{(n)} \in H^1$, *find * $\tilde{u} \in H^1$ *such that*
+*Given *$$u^{(n)} \in H^1$$, *find * $$\tilde{u} \in H^1$$ *such that*
 
 $$ \int_\Omega \nabla \tilde{u} \cdot\nabla \hat{u}\, dx + \int_\Omega e^{-u^{(n)}}\,\tilde{u}\,\hat{u}\, dx + \int_{\partial\Omega } \tilde{u}\, \hat{u}\,ds = -
 \left( \int_\Omega \nabla u^{(n)} \cdot\nabla \hat{u}\, dx - \int_\Omega e^{-u^{(n)}}\,\hat{u}\, dx + \int_{\partial\Omega } u^{(n)}\, \hat{u}\right) \quad \forall \hat{u} \in H^1.$$
 
-*Update the solution using the direction* $\tilde{u}$
+*Update the solution using the direction* $$\tilde{u}$$
 
 $$ u^{(n+1)} = u^{(n)} + \alpha \tilde{u}.$$
 
-Here $\alpha$ denotes a relaxation parameter (back-tracking/line-search) used to achieve global convergence of the Newton method.
+Here $$\alpha$$ denotes a relaxation parameter (back-tracking/line-search) used to achieve global convergence of the Newton method.
 
 Finally the strong form of the Newton step reads
 

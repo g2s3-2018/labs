@@ -3,7 +3,7 @@
 
 In this notebook we numerically verify the theoretical converge rates of the finite element discretization of an elliptic problem.
 
-Specifically, for a domain $\Omega \subset \mathbb{R}^2$ with boundary $\partial \Omega = \Gamma_D \cup \Gamma_N$, we consider the  the boundary value problem (BVP):
+Specifically, for a domain $$\Omega \subset \mathbb{R}^2$$ with boundary $$\partial \Omega = \Gamma_D \cup \Gamma_N$$, we consider the  the boundary value problem (BVP):
 
 $$ 
 \left\{
@@ -14,38 +14,38 @@ u = u_D & \text{on} \; \Gamma_D, \\
 \end{array}
 \right.$$
 
-Here, $\Gamma_D \subset \Omega$ denotes the part of the boundary where we prescribe Dirichlet boundary conditions, and $\Gamma_N \subset \Omega$ denotes the part of the boundary where we prescribe Neumann boundary conditions. $\boldsymbol{n}$ denotes the unit normal of $\partial \Omega$ pointing outside $\Omega$. 
+Here, $$\Gamma_D \subset \Omega$$ denotes the part of the boundary where we prescribe Dirichlet boundary conditions, and $$\Gamma_N \subset \Omega$$ denotes the part of the boundary where we prescribe Neumann boundary conditions. $$\boldsymbol{n}$$ denotes the unit normal of $$\partial \Omega$$ pointing outside $$\Omega$$. 
 
-The coefficient $f$, $g$, $u_D$ are chosen such that the analytical solution is $u_{ex} = e^{\pi y} \sin(\pi x)$.
+The coefficient $$f$$, $$g$$, $$u_D$$ are chosen such that the analytical solution is $$u_{ex} = e^{\pi y} \sin(\pi x)$$.
 
-To obtain the weak form, we define the functional spaces $V_{u_D} = \{ v \in H^1(\Omega) \, \vert\, v = u_D \,{\rm on }\, \Gamma_D\}$ and $V_{0} = \{ v \in H^1(\Omega) \, \vert \, v = 0 \,{\rm on }\, \Gamma_D\}$.
+To obtain the weak form, we define the functional spaces $$V_{u_D} = \{ v \in H^1(\Omega) \, \vert\, v = u_D \,{\rm on }\, \Gamma_D\}$$ and $$V_{0} = \{ v \in H^1(\Omega) \, \vert \, v = 0 \,{\rm on }\, \Gamma_D\}$$.
 
 Then, the weak formulation of the boundary value problem reads
 
-Find $u \in V_{u_D}$:
+Find $$u \in V_{u_D}$$:
 $$ \int_\Omega \nabla u \cdot \nabla v \, dx = \int_\Omega f\,v \, dx + \int_{\Gamma_N} g\,v\,ds, \quad \forall v \in V_0. $$
 
-Finally, to obtain the finite element discretization we introduce a uniform triangulation (mesh) $\mathcal{T}_h$ of the domain $\Omega$ and finite dimensional subspace $V_h \subset H^1(\Omega)$. 
-The space $V_{h}$ consists of globally continuous functions that are piecewise polynomial with degree $k$ on each element $\tau$ of the mesh $\mathcal{T}_h$, that is
+Finally, to obtain the finite element discretization we introduce a uniform triangulation (mesh) $$\mathcal{T}_h$$ of the domain $$\Omega$$ and finite dimensional subspace $$V_h \subset H^1(\Omega)$$. 
+The space $$V_{h}$$ consists of globally continuous functions that are piecewise polynomial with degree $$k$$ on each element $$\tau$$ of the mesh $$\mathcal{T}_h$$, that is
 $$ V_h := \left\{ v_h \in V \; \vert \; \left. v_h \right\vert_{\tau} \in P^{k} \quad  \forall \tau \in \mathcal{T}_h \right\},$$
-where $P^{k}$ denotes the space of polynomial function with degree $k$.
+where $$P^{k}$$ denotes the space of polynomial function with degree $$k$$.
 
-By letting $V_{h, u_D} := \{ v_h \in V_h \, \vert \, v_h = u_D \text{ on } \Gamma_D\}$ and $V_{h, 0} := \{ v_h \in V_h \, \vert \, v_h = 0 \text{ on } \Gamma_D\}$, the finite element discretization of the BVP reads:
+By letting $$V_{h, u_D} := \{ v_h \in V_h \, \vert \, v_h = u_D \text{ on } \Gamma_D\}$$ and $$V_{h, 0} := \{ v_h \in V_h \, \vert \, v_h = 0 \text{ on } \Gamma_D\}$$, the finite element discretization of the BVP reads:
 
-Find $u_h \in V_{h, u_D}$ such that
+Find $$u_h \in V_{h, u_D}$$ such that
 $$ \int_\Omega \nabla u_h \cdot \nabla v_h \, dx = \int_\Omega f\,v_h \, dx + \int_{\Gamma_N} g\,v_h\,ds, \quad \forall v_h \in V_{h,0}. $$
 
 ## Finite element error estimates
 
-Assuming that the analytical solution is regular enough (i.e. $u_{\rm ex} \in H^{k+1}(\Omega)$), the following error estimates hold
+Assuming that the analytical solution is regular enough (i.e. $$u_{\rm ex} \in H^{k+1}(\Omega)$$), the following error estimates hold
 
 - Energy norm:
 $$ \left\| u_{\rm ex} - u_h \right\|_{\rm energy} := \left( \int_\Omega \left\vert \nabla u_{\rm ex} - \nabla u_{h}\right\vert^2 dx \right)^{\frac{1}{2}} = \mathcal{O}(h^k), $$
 
-- $L^2(\Omega)$ norm:
+- $$L^2(\Omega)$$ norm:
 $$ \left\| u_{\rm ex} - u_h \right\|_{L^2} := \left( \int_\Omega \left\vert u_{\rm ex} - u_{h}\right\vert^2 dx \right)^{\frac{1}{2}} = \mathcal{O}(h^{k+1}), $$
 
-where $h$ denote the mesh size.
+where $$h$$ denote the mesh size.
 
 ## Step 1. Import modules
 
@@ -69,7 +69,7 @@ dl.set_log_active(False)
 
 Here we implement a function `solveBVP` that computes the finite element discretizions and solves the discretized problem.
 
-As input, it takes the number of mesh elements `n` in each direction and the polynomial degree `degree` of the finite element space. As output, it returns the errors in the $L^2$ and energy norm.
+As input, it takes the number of mesh elements `n` in each direction and the polynomial degree `degree` of the finite element space. As output, it returns the errors in the $$L^2$$ and energy norm.
 
 
 ```python
@@ -116,7 +116,7 @@ The function `make_convergence_plot` generates the converges plots.
 
 It takes as input a `numpy.array n` that contains a sequence of number of mesh elements and the polynomial degree `degree` of the finite element space.
 
-It plots the energy norm of the error (in red) and the $L^2$ norm of the error (in blue) in a loglog scale. The $x$-axis is the mesh size $h$.
+It plots the energy norm of the error (in red) and the $$L^2$$ norm of the error (in blue) in a loglog scale. The $$x$$-axis is the mesh size $$h$$.
 
 The slope of the lines in the loglog scale represents the order of converge and dotted lines represents the expected convergence rate.
 

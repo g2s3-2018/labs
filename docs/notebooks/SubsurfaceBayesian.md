@@ -33,13 +33,13 @@ gave rise to the observed data.
 ### Bayes's Theorem
 
 The posterior probability distribution combines the prior pdf
-$\mu_{\text{prior}}(m)$ over the parameter space, which encodes
+$$\mu_{\text{prior}}(m)$$ over the parameter space, which encodes
 any knowledge or assumptions about the parameter space that we may
 wish to impose before the data are considered, with a likelihood pdf
-$\pi_{\text{like}}(\data \; | \; m)$, which explicitly
-represents the probability that a given parameter $m$
-might give rise to the observed data $\data \in
-\mathbb{R}^{n_t}$, namely:
+$$\pi_{\text{like}}(\data \; | \; m)$$, which explicitly
+represents the probability that a given parameter $$m$$
+might give rise to the observed data $$\data \in
+\mathbb{R}^{n_t}$$, namely:
 
 $$
 \begin{align}
@@ -53,7 +53,7 @@ Note that infinite-dimensional analog of Bayes's formula requires the use Radon-
 
 #### The prior
 
-We consider a Gaussian prior with mean ${m}_{\rm prior}$ and covariance $\prcov$, $\mu_{\rm prior} \sim \mathcal{N}({m}_{\rm prior}, \prcov)$. The covariance is given by the discretization of the inverse of differential operator $\mathcal{A}^{-2} = (-\gamma \Delta + \delta I)^{-2}$, where $\gamma$, $\delta > 0$ control the correlation length and the variance of the prior operator. This choice of prior ensures that it is a trace-class operator, guaranteeing bounded pointwise variance and a well-posed infinite-dimensional Bayesian inverse problem.
+We consider a Gaussian prior with mean $${m}_{\rm prior}$$ and covariance $$\prcov$$, $$\mu_{\rm prior} \sim \mathcal{N}({m}_{\rm prior}, \prcov)$$. The covariance is given by the discretization of the inverse of differential operator $$\mathcal{A}^{-2} = (-\gamma \Delta + \delta I)^{-2}$$, where $$\gamma$$, $$\delta > 0$$ control the correlation length and the variance of the prior operator. This choice of prior ensures that it is a trace-class operator, guaranteeing bounded pointwise variance and a well-posed infinite-dimensional Bayesian inverse problem.
 
 #### The likelihood
 
@@ -65,10 +65,10 @@ $$
 \pi_{\text like}(\data \; | \; m)  = \exp \left( - \tfrac{1}{2} \parallel {\bf f}(m) - \data \parallel^{2}_{ {\bf \Gamma}_{\text{noise}}^{-1}}\right)
 $$
 
-Here ${\bf f}$ is the parameter-to-observable map that takes a parameter $m$ and maps
-it to the space observation vector $\data$.
+Here $${\bf f}$$ is the parameter-to-observable map that takes a parameter $$m$$ and maps
+it to the space observation vector $$\data$$.
 
-In this application, ${\bf f}$ consists in the composition of a PDE solve (to compute the state $u$) and a pointwise observation of the state $u$ to extract the observation vector $\data$.
+In this application, $${\bf f}$$ consists in the composition of a PDE solve (to compute the state $$u$$) and a pointwise observation of the state $$u$$ to extract the observation vector $$\data$$.
 
 #### The posterior
 
@@ -76,9 +76,9 @@ $$
 d\mu_{\text{post}}(m \; | \; \data)  \propto \exp \left( - \tfrac{1}{2} \parallel {\bf f}(m) - \data \parallel^{2}_{ {\bf \Gamma}_{\text{noise}}^{-1}} \! - \tfrac{1}{2}\parallel m - m_{\rm prior} \parallel^{2}_{\prcov^{-1}} \right)
 $$
 
-### The Laplace approximation to the posterior: $\nu \sim \mathcal{N}({\map},\bf \postcov)$
+### The Laplace approximation to the posterior: $$\nu \sim \mathcal{N}({\map},\bf \postcov)$$
 
-The mean of the Laplace approximation posterior distribution, ${\map}$, is the
+The mean of the Laplace approximation posterior distribution, $${\map}$$, is the
 parameter maximizing the posterior, and
 is known as the maximum a posteriori (MAP) point.  It can be found
 by minimizing the negative log of the posterior, which amounts to
@@ -93,13 +93,13 @@ $$
 $$
 
 The posterior covariance matrix is then given by the inverse of
-the Hessian matrix of $\mathcal{J}$ at $\map$, namely
+the Hessian matrix of $$\mathcal{J}$$ at $$\map$$, namely
 
 $$
 \postcov = \left(\Hmisfit(\map) + \prcov^{-1} \right)^{-1},
 $$
 
-provided that $\Hmisfit(\map)$ is positive definite.
+provided that $$\Hmisfit(\map)$$ is positive definite.
 
 
 #### The generalized eigenvalue problem
@@ -110,32 +110,32 @@ $$
 \def\Gprior{ \boldsymbol{\Gamma}_{\rm prior} }
 $$
 
-In what follows we denote with $\matHmis, \Gpost, \Gprior \in \mathbb{R}^{n\times n}$ the matrices stemming from the discretization of the operators $\Hmisfit(\map)$, $\postcov$, $\prcov$ with respect to the unweighted Euclidean inner product.
+In what follows we denote with $$\matHmis, \Gpost, \Gprior \in \mathbb{R}^{n\times n}$$ the matrices stemming from the discretization of the operators $$\Hmisfit(\map)$$, $$\postcov$$, $$\prcov$$ with respect to the unweighted Euclidean inner product.
 Then we considered the symmetric generalized eigenvalue problem
 
 $$
  \matHmis {\matrix V} = \Gprior^{-1} {\matrix V} {\matrix \Lambda},
 $$
 
-where ${\matrix \Lambda} = \diag(\lambda_i) \in \mathbb{R}^{n\times n}$
-contains the generalized eigenvalues and the columns of ${\matrix V}\in
-\mathbb R^{n\times n}$ the generalized eigenvectors such that 
-${\matrix V}^T \prcov^{-1} {\matrix V} = {\matrix I}$.
+where $${\matrix \Lambda} = \diag(\lambda_i) \in \mathbb{R}^{n\times n}$$
+contains the generalized eigenvalues and the columns of $${\matrix V}\in
+\mathbb R^{n\times n}$$ the generalized eigenvectors such that 
+$${\matrix V}^T \prcov^{-1} {\matrix V} = {\matrix I}$$.
 
 #### Randomized eigensolvers to construct the approximate spectral decomposition
 
-When the generalized eigenvalues $\{\lambda_i\}$ decay rapidly, we can
-extract a low-rank approximation of $\matHmis$ by retaining only the $r$
+When the generalized eigenvalues $$\{\lambda_i\}$$ decay rapidly, we can
+extract a low-rank approximation of $$\matHmis$$ by retaining only the $$r$$
 largest eigenvalues and corresponding eigenvectors,
 
 $$
  \matHmis \approx \Gprior^{-1} \Vr {\matrix{\Lambda}}_r \Vr^T \Gprior^{-1},
 $$
 
-Here, $\Vr \in \mathbb{R}^{n\times r}$ contains only the $r$
-generalized eigenvectors of $\matHmis$ that correspond to the $r$ largest eigenvalues,
-which are assembled into the diagonal matrix ${\matrix{\Lambda}}_r = \diag
-(\lambda_i) \in \mathbb{R}^{r \times r}$.
+Here, $$\Vr \in \mathbb{R}^{n\times r}$$ contains only the $$r$$
+generalized eigenvectors of $$\matHmis$$ that correspond to the $$r$$ largest eigenvalues,
+which are assembled into the diagonal matrix $${\matrix{\Lambda}}_r = \diag
+(\lambda_i) \in \mathbb{R}^{r \times r}$$.
 
 #### The approximate posterior covariance
 
@@ -150,11 +150,11 @@ $$
 \end{align}
 $$
 
-where ${\matrix{D}}_r :=\diag(\lambda_i/(\lambda_i+1)) \in
-\mathbb{R}^{r\times r}$. The last term in this expression captures the
+where $${\matrix{D}}_r :=\diag(\lambda_i/(\lambda_i+1)) \in
+\mathbb{R}^{r\times r}$$. The last term in this expression captures the
 error due to truncation in terms of the discarded eigenvalues; this
-provides a criterion for truncating the spectrum, namely that $r$ is
-chosen such that $\lambda_r$ is small relative to 1. 
+provides a criterion for truncating the spectrum, namely that $$r$$ is
+chosen such that $$\lambda_r$$ is small relative to 1. 
 
 Therefore we can approximate the posterior covariance as
 
@@ -162,9 +162,9 @@ $$
 \Gpost \approx \Gprior - \Vr {\matrix{D}}_r \Vr^T
 $$
 
-#### Drawing samples from a Gaussian distribution with covariance $\Gpost$
+#### Drawing samples from a Gaussian distribution with covariance $$\Gpost$$
 
-Let ${\bf x}$ be a sample for the prior distribution, i.e. ${\bf x} \sim \mathcal{N}({\bf 0}, \Gprior)$, then, using the low rank approximation of the posterior covariance, we compute a sample ${\bf v} \sim \mathcal{N}({\bf 0}, \Gpost)$ as
+Let $${\bf x}$$ be a sample for the prior distribution, i.e. $${\bf x} \sim \mathcal{N}({\bf 0}, \Gprior)$$, then, using the low rank approximation of the posterior covariance, we compute a sample $${\bf v} \sim \mathcal{N}({\bf 0}, \Gpost)$$ as
 
 $$
   {\bf v} = \big\{ \Vr \big[ ({\matrix{\Lambda}}_r +
@@ -265,7 +265,7 @@ print( "Number of dofs: STATE={0}, PARAMETER={1}, ADJOINT={2}".format(
 
 ## 4. Set up the forward problem
 
-Let $\Omega$ be the unit square in $\mathbb{R}^2$, and $\Gamma_D$, $\Gamma_N$  be the Dirichlet and Neumann portitions of the boundary $\partial \Omega$ (that is $\Gamma_D \cup \Gamma_N = \partial \Omega$, $\Gamma_D \cap \Gamma_N = \emptyset$). The forward problem reads
+Let $$\Omega$$ be the unit square in $$\mathbb{R}^2$$, and $$\Gamma_D$$, $$\Gamma_N$$  be the Dirichlet and Neumann portitions of the boundary $$\partial \Omega$$ (that is $$\Gamma_D \cup \Gamma_N = \partial \Omega$$, $$\Gamma_D \cap \Gamma_N = \emptyset$$). The forward problem reads
 
 $$
 \left\{
@@ -277,8 +277,8 @@ e^m \nabla u \cdot \boldsymbol{n} = 0 & \text{on } \Gamma_N,
 \right.
 $$
 
-where $u \in \mathcal{V}$ is the state variable, and $m \in \mathcal{M}$ is the uncertain parameter. Here $\Gamma_D$ corresponds to the top and bottom sides of the unit square, and $\Gamma_N$ corresponds to the left and right sides.
-We also let $f = 0$, and $u_D = 1$ on the top boundary and $u_D = 0$ on the bottom boundary.
+where $$u \in \mathcal{V}$$ is the state variable, and $$m \in \mathcal{M}$$ is the uncertain parameter. Here $$\Gamma_D$$ corresponds to the top and bottom sides of the unit square, and $$\Gamma_N$$ corresponds to the left and right sides.
+We also let $$f = 0$$, and $$u_D = 1$$ on the top boundary and $$u_D = 0$$ on the bottom boundary.
 
 To set up the forward problem we use the `PDEVariationalProblem` class, which requires the following inputs
 - the finite element spaces for the state, parameter, and adjoint variables `Vh`
@@ -309,15 +309,15 @@ pde = PDEVariationalProblem(Vh, pde_varf, bc, bc0, is_fwd_linear=True)
 
 ## 4. Set up the prior
 
-To obtain the synthetic true paramter $m_{\rm true}$ we generate a realization from the prior distribution.
+To obtain the synthetic true paramter $$m_{\rm true}$$ we generate a realization from the prior distribution.
 
-Here we assume a Gaussian prior, $\mu_{\rm prior} \sim \mathcal{N}(0, \prcov)$ with zero mean and covariance matrix $\prcov = \mathcal{A}^{-2}$, where $\mathcal{A}$ is a differential operator of the form
+Here we assume a Gaussian prior, $$\mu_{\rm prior} \sim \mathcal{N}(0, \prcov)$$ with zero mean and covariance matrix $$\prcov = \mathcal{A}^{-2}$$, where $$\mathcal{A}$$ is a differential operator of the form
 
 $$ \mathcal{A} = -\gamma \nabla \cdot \left( \Theta\, \nabla \right) + \delta I, $$
 
-equipped with Robin boundary conditions $\nabla m \cdot \boldsymbol{n} + \beta m = 0$, where $\beta \propto \sqrt{\gamma\delta}$.
+equipped with Robin boundary conditions $$\nabla m \cdot \boldsymbol{n} + \beta m = 0$$, where $$\beta \propto \sqrt{\gamma\delta}$$.
 
-Here $\Theta$ is a s.p.d. anisotropic tensor of the form
+Here $$\Theta$$ is a s.p.d. anisotropic tensor of the form
 
 $$ \Theta =
 \begin{bmatrix}
@@ -358,17 +358,17 @@ model = Model(pde,prior, misfit)
 
 ## 5. Set up the misfit functional and generate synthetic observations
 
-To setup the observation operator $\mathcal{B}: \mathcal{V} \mapsto \mathbb{R}^{n_t}$, we generate $n_t$ (`ntargets` in the code below) random locations where to evaluate the value of the state.
+To setup the observation operator $$\mathcal{B}: \mathcal{V} \mapsto \mathbb{R}^{n_t}$$, we generate $$n_t$$ (`ntargets` in the code below) random locations where to evaluate the value of the state.
 
-Under the assumption of Gaussian additive noise, the likelihood function $\pi_{\rm like}$ has the form
+Under the assumption of Gaussian additive noise, the likelihood function $$\pi_{\rm like}$$ has the form
 
 $$\pi_{\rm like}( \data \,| \, m ) \propto \exp\left( -\frac{1}{2}\|\mathcal{B}\,u(m) - \data \|^2_{\Gamma_{\rm noise}^{-1}}\right), $$
 
-where $u(m)$ denotes the solution of the forward model at a given parameter $m$.
+where $$u(m)$$ denotes the solution of the forward model at a given parameter $$m$$.
 
-The class `PointwiseStateObservation` implements the evaluation of the log-likelihood function and of its partial derivatives w.r.t. the state $u$ and parameter $m$.
+The class `PointwiseStateObservation` implements the evaluation of the log-likelihood function and of its partial derivatives w.r.t. the state $$u$$ and parameter $$m$$.
 
-To generate the synthetic observation, we first solve the forward problem using the true parameter $m_{\rm true}$. Synthetic observations are obtained by perturbing the state variable at the observation points with a random Gaussian noise.
+To generate the synthetic observation, we first solve the forward problem using the true parameter $$m_{\rm true}$$. Synthetic observations are obtained by perturbing the state variable at the observation points with a random Gaussian noise.
 `rel_noise` is the signal to noise ratio.
 
 
@@ -497,7 +497,7 @@ In particular, we solve
 $$ \matHmis {\bf v}_i = \lambda_i \Gprior^{-1} {\bf v}_i. $$
 
 The Figure shows the largest *k* generalized eigenvectors of the Hessian misfit.
-The effective rank of the Hessian misfit is the number of eigenvalues above the red line ($y=1$).
+The effective rank of the Hessian misfit is the number of eigenvalues above the red line ($$y=1$$).
 The effective rank is independent of the mesh size.
 
 
@@ -611,7 +611,7 @@ As a quantity of interest, we consider the log of the flux through the bottom bo
 
 $$ q(m) = \ln \left\{ \int_{\Gamma_b} e^m \nabla u \cdot \mathbf{n} \, ds \right\}, $$
 
-where the state variable $u$ denotes the pressure, and $\mathbf{n}$ is the unit normal vector to $\Gamma_b$ (the bottom boundary of the domain).
+where the state variable $$u$$ denotes the pressure, and $$\mathbf{n}$$ is the unit normal vector to $$\Gamma_b$$ (the bottom boundary of the domain).
 
 
 ```python
@@ -647,33 +647,33 @@ qoi = FluxQOI(Vh,dss(1))
 
 ## 12. Compute posterior expectations using MCMC
 
-We compute the mean of the quantity of interest $q$ using MCMC with preconditioned Crank-Nicolson proposal (pCN) and generalized preconditioned Crank-Nicolson proposal (gpCN).
+We compute the mean of the quantity of interest $$q$$ using MCMC with preconditioned Crank-Nicolson proposal (pCN) and generalized preconditioned Crank-Nicolson proposal (gpCN).
 
 ### Preconditioned Crank-Nicolson
 
 The pCN algorithm is perhaps the simplest MCMC method that is well-defined  in  the  infinite
 dimensional setting, that is that ensures a mixing rates independent of the dimension of the discretized parameter space.
 
-For a given Gaussian prior measure $\mu_{\rm prior} \sim \mathcal{N}(m_{\rm prior}, \mathcal{C}_{\rm prior})$, a negative log likelihood function $\Phi(m, \data) = \frac{1}{2}\| {\bf f}(m) - \data \|^2_{\Gamma_{\rm noise}^{-1}}$, the acceptance ratio of pCN is defined as
+For a given Gaussian prior measure $$\mu_{\rm prior} \sim \mathcal{N}(m_{\rm prior}, \mathcal{C}_{\rm prior})$$, a negative log likelihood function $$\Phi(m, \data) = \frac{1}{2}\| {\bf f}(m) - \data \|^2_{\Gamma_{\rm noise}^{-1}}$$, the acceptance ratio of pCN is defined as
 
 $$ a( m_{\rm current}, m_{\rm proposed}) := \min\left\{1, \exp\left( \Phi(m_{\rm current}, \data) - \Phi(m_{\rm proposed}, \data) \right) \right\}.$$
 
 The algorithm below summarizes the pCN method.
 
-1. Set $k = 0$ and pick $m^{(0)}$
-2. Set $v^{(k)} = m_{\rm prior} + \sqrt{1 - \beta^2}(m^{(k)} - m_{\rm prior}) + \beta \xi^{(k)}, \quad
-\xi^{(k)} \sim \mathcal{N}( 0, \mathcal{C}_{\rm prior} )$
-3. Set $m^{(k+1)} = v^{(k)}$ with probability $a(m^{(k)}, v^{(k)})$
-4. Set $m^{(k+1)} = m^{(k)}$ otherwise
-5. $k \leftarrow k + 1$ and return to 2
+1. Set $$k = 0$$ and pick $$m^{(0)}$$
+2. Set $$v^{(k)} = m_{\rm prior} + \sqrt{1 - \beta^2}(m^{(k)} - m_{\rm prior}) + \beta \xi^{(k)}, \quad
+\xi^{(k)} \sim \mathcal{N}( 0, \mathcal{C}_{\rm prior} )$$
+3. Set $$m^{(k+1)} = v^{(k)}$$ with probability $$a(m^{(k)}, v^{(k)})$$
+4. Set $$m^{(k+1)} = m^{(k)}$$ otherwise
+5. $$k \leftarrow k + 1$$ and return to 2
 
-Above the parameter $\beta$ controls the step lenght of the pCN proposals. A small $\beta$ will lead to a high acceptance ratio, but the proposed sample will be very similar to the current one, thus leading to poor mixing.
-On the other hand, a too large $\beta$ will lead to small acceptance ratio, again leading to poor mixing. Therefore, it is important to find the correct trade-off between a large step-size and a good acceptance ratio.
+Above the parameter $$\beta$$ controls the step lenght of the pCN proposals. A small $$\beta$$ will lead to a high acceptance ratio, but the proposed sample will be very similar to the current one, thus leading to poor mixing.
+On the other hand, a too large $$\beta$$ will lead to small acceptance ratio, again leading to poor mixing. Therefore, it is important to find the correct trade-off between a large step-size and a good acceptance ratio.
 
 
 ### Generalized Preconditioned Crank-Nicolson
 
-gpCN is a generalized version of the pCN sampler. While the proposals of pCN are drown from the prior Gaussian distribution $\mu_{\rm prior}$, proposals in the generalized pCN are drown from a Gaussian approximation $\nu$ of the posterior distribution. More specifically, for a given Gaussian prior measure $\mu_{\rm prior} \sim \mathcal{N}(m_{\rm prior}, \mathcal{C}_{\rm prior})$, a negative log likelihood function $\Phi(m, \data) = \frac{1}{2}\| {\bf f}(m) - \data \|^2_{\Gamma_{\rm noise}^{-1}}$, and a proposal Gaussian distribution $\nu \sim \mathcal{N}(m_\nu, \mathcal{C}_\nu)$, the acceptance ratio of gpCN is defined as
+gpCN is a generalized version of the pCN sampler. While the proposals of pCN are drown from the prior Gaussian distribution $$\mu_{\rm prior}$$, proposals in the generalized pCN are drown from a Gaussian approximation $$\nu$$ of the posterior distribution. More specifically, for a given Gaussian prior measure $$\mu_{\rm prior} \sim \mathcal{N}(m_{\rm prior}, \mathcal{C}_{\rm prior})$$, a negative log likelihood function $$\Phi(m, \data) = \frac{1}{2}\| {\bf f}(m) - \data \|^2_{\Gamma_{\rm noise}^{-1}}$$, and a proposal Gaussian distribution $$\nu \sim \mathcal{N}(m_\nu, \mathcal{C}_\nu)$$, the acceptance ratio of gpCN is defined as
 
 $$ a_\nu( m_{\rm current}, m_{\rm proposed}) := \min\left\{1, \exp\left( \Delta(m_{\rm current}) - \Delta(m_{\rm proposed}) \right) \right\}, $$
 
@@ -681,15 +681,15 @@ where
 
 $$ \Delta(m) = \Phi(m, \data) + \frac{1}{2}\| m - m_{\rm prior}\|^2_{\mathcal{C}_{\rm prior}^{-1}} - \frac{1}{2} \| m - m_\nu \|^2_{C_{\nu}^{-1}}. $$
 
-If $\nu$ is a good Gaussian approximation of $\mu_{\rm post}$, one expects $\Delta$ to be smaller that $\Phi$, at least in regions of high posterior probability. This suggests that the generalized pCN will have a better acceptance probability than pCN, leading to more rapid sampling.
+If $$\nu$$ is a good Gaussian approximation of $$\mu_{\rm post}$$, one expects $$\Delta$$ to be smaller that $$\Phi$$, at least in regions of high posterior probability. This suggests that the generalized pCN will have a better acceptance probability than pCN, leading to more rapid sampling.
 The algorithm below summarizes the gpCN method.
 
-1. Set $k = 0$ and pick $m^{(0)}$
-2. Set $v^{(k)} = m_\nu + \sqrt{1 - \beta^2}(m^{(k)} - m_\nu) + \beta \xi^{(k)}, \quad
-\xi^{(k)} \sim \mathcal{N}( 0, \mathcal{C}_\nu )$
-3. Set $m^{(k+1)} = v^{(k)}$ with probability $a_\nu(m^{(k)}, v^{(k)})$
-4. Set $m^{(k+1)} = m^{(k)}$ otherwise
-5. $k \leftarrow k + 1$ and return to 2
+1. Set $$k = 0$$ and pick $$m^{(0)}$$
+2. Set $$v^{(k)} = m_\nu + \sqrt{1 - \beta^2}(m^{(k)} - m_\nu) + \beta \xi^{(k)}, \quad
+\xi^{(k)} \sim \mathcal{N}( 0, \mathcal{C}_\nu )$$
+3. Set $$m^{(k+1)} = v^{(k)}$$ with probability $$a_\nu(m^{(k)}, v^{(k)})$$
+4. Set $$m^{(k+1)} = m^{(k)}$$ otherwise
+5. $$k \leftarrow k + 1$$ and return to 2
 
 > In the code below we ran the chain for 10,000 samples, this is may not be enough to obtain accurate posterior expectation, however it will still give you a feel on how well the chain is mixing.
 

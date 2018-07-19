@@ -3,7 +3,7 @@
 ## The linear source inversion problem
 
 We consider the following linear source inversion problem.
-Find the state $u \in H^1_{\Gamma_D}(\Omega)$ and the source (*parameter*) $m \in H^1(\Omega)$ that solves
+Find the state $$u \in H^1_{\Gamma_D}(\Omega)$$ and the source (*parameter*) $$m \in H^1(\Omega)$$ that solves
 
 $$
 \begin{aligned}
@@ -17,15 +17,15 @@ $$
 
 Here:
 
-- $u_d$ is a $n_{\rm obs}$ finite dimensional vector that denotes noisy observations of the state $u$ in $n_{\rm obs}$ locations $\mathbf{x}_i$, $i=1,\ldots,n_{\rm obs}$. Specifically, $u_d(i) = u_{\rm true}( {\bf x}_i ) + \eta_i$, where $\eta_i$ are i.i.d. $\mathcal{N}(0, \sigma^2)$.
+- $$u_d$$ is a $$n_{\rm obs}$$ finite dimensional vector that denotes noisy observations of the state $$u$$ in $$n_{\rm obs}$$ locations $$\mathbf{x}_i$$, $$i=1,\ldots,n_{\rm obs}$$. Specifically, $$u_d(i) = u_{\rm true}( {\bf x}_i ) + \eta_i$$, where $$\eta_i$$ are i.i.d. $$\mathcal{N}(0, \sigma^2)$$.
 
-- $B: H^1_0(\Omega) \rightarrow {R}^{n_{\rm obs}}$ is the linear operator that evaluates the state $u$ at the observation locations $\mathbf{x}_i$, $i=1,\ldots,n_{\rm obs}$.
+- $$B: H^1_0(\Omega) \rightarrow {R}^{n_{\rm obs}}$$ is the linear operator that evaluates the state $$u$$ at the observation locations $$\mathbf{x}_i$$, $$i=1,\ldots,n_{\rm obs}$$.
 
-- $\delta$ and $\gamma$ are the parameters of the regularization penalizing the $L^2(\Omega)$ and $H^1(\Omega)$ norm of $m-m_0$, respectively.
+- $$\delta$$ and $$\gamma$$ are the parameters of the regularization penalizing the $$L^2(\Omega)$$ and $$H^1(\Omega)$$ norm of $$m-m_0$$, respectively.
 
-- $k$, ${\bf v}$, $c$ are given coefficients representing the diffusivity coefficient, the advective velocity and the reaction term, respectively.
+- $$k$$, $${\bf v}$$, $$c$$ are given coefficients representing the diffusivity coefficient, the advective velocity and the reaction term, respectively.
 
-- $\Gamma_D \subset \partial \Omega$, $\Gamma_N \subset \partial \Omega$ represents the subdomain of $\partial\Omega$ where we impose Dirichlet or Neumann boundary conditions, respectively.
+- $$\Gamma_D \subset \partial \Omega$$, $$\Gamma_N \subset \partial \Omega$$ represents the subdomain of $$\partial\Omega$$ where we impose Dirichlet or Neumann boundary conditions, respectively.
 
 
 
@@ -376,9 +376,9 @@ plt.show()
 
 ## 6. Dependence on the PDE coefficients
 
-Assume a constant reaction term $c = 0.1$, and we consider different values for the diffusivity coefficient $k$.
+Assume a constant reaction term $$c = 0.1$$, and we consider different values for the diffusivity coefficient $$k$$.
 
-The smaller the value of $k$ the slower the decay in the spectrum.
+The smaller the value of $$k$$ the slower the decay in the spectrum.
 
 
 ```python

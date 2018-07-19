@@ -7,14 +7,14 @@ interpretation of the unknowns and the type of measurements, this
 model problem arises, for instance, in inversion for groundwater flow
 or heat conductivity.  It can also be interpreted as finding a
 membrane with a certain spatially varying stiffness. Let
-$\Omega\subset\mathbb{R}^n$, $n\in\{1,2,3\}$ be an open, bounded
+$$\Omega\subset\mathbb{R}^n$$, $$n\in\{1,2,3\}$$ be an open, bounded
 domain and consider the following problem:
 
 $$
 \min_{m} J(m):=\frac{1}{2}\int_\Omega (u-u_d)^2\, dx + \frac{\gamma}{2}\int_\Omega|\nabla m|^2\,dx,
 $$
 
-where $u$ is the solution of
+where $$u$$ is the solution of
 
 $$
 \begin{split}
@@ -23,62 +23,62 @@ u &= 0 \text{ on }\partial\Omega.
 \end{split}
 $$
 
-Here $m \in \mathcal{M}:=\{m\in L^{\infty}(\Omega) \bigcap H^1(\Omega)\}$ denotes the unknown coefficient field, 
-$u \in \mathcal{V}:= H^1_0(\Omega)$ the state variable, $u_d$ the (possibly noisy) data, $f\in H^{-1}(\Omega)$ a given volume force, and $\gamma\ge 0$ the regularization parameter.
+Here $$m \in \mathcal{M}:=\{m\in L^{\infty}(\Omega) \bigcap H^1(\Omega)\}$$ denotes the unknown coefficient field, 
+$$u \in \mathcal{V}:= H^1_0(\Omega)$$ the state variable, $$u_d$$ the (possibly noisy) data, $$f\in H^{-1}(\Omega)$$ a given volume force, and $$\gamma\ge 0$$ the regularization parameter.
 
 ### The variational (or weak) form of the state equation:
 
-Find $u\in \mathcal{V}$ such that 
+Find $$u\in \mathcal{V}$$ such that 
 
 $$(e^m \nabla u,\nabla v) - (f,v) = 0, \text{ for all } v\in \mathcal{V},$$
 
-where $\mathcal{V} := H_0^1(\Omega)$ is the space of functions vanishing on $\partial\Omega$ with square integrable derivatives. 
+where $$\mathcal{V} := H_0^1(\Omega)$$ is the space of functions vanishing on $$\partial\Omega$$ with square integrable derivatives. 
 
-Above, $(\cdot\,\cdot)$ denotes the $L^2$-inner product, i.e, for scalar functions $u,v$ defined on $\Omega$ we write 
+Above, $$(\cdot\,\cdot)$$ denotes the $$L^2$$-inner product, i.e, for scalar functions $$u,v$$ defined on $$\Omega$$ we write 
 
 $$(u,v) := \int_\Omega u(x) v(x) \,dx, $$
 
-and similarly for vector functions $\boldsymbol{u}, \boldsymbol{v}$ defined on $\Omega$ we write
+and similarly for vector functions $$\boldsymbol{u}, \boldsymbol{v}$$ defined on $$\Omega$$ we write
 
 $$(\boldsymbol{u},\boldsymbol{v}) := \int_\Omega \boldsymbol{u}(x) \cdot \boldsymbol{v}(x) \,dx.$$
 
 ### Gradient evaluation:
 
-The Lagrangian functional $\mathscr{L}:\mathcal{V}\times\mathcal{M}\times\mathcal{V}\rightarrow \mathbb{R}$ is given by
+The Lagrangian functional $$\mathscr{L}:\mathcal{V}\times\mathcal{M}\times\mathcal{V}\rightarrow \mathbb{R}$$ is given by
 
 $$
 \mathscr{L}(u,m,p):= \frac{1}{2}(u-u_d,u-u_d) +
 \frac{\gamma}{2}(\nabla m, \nabla m) +  (e^m\nabla u,\nabla p) - (f,p).
 $$
 
-Then the gradient of the cost functional $\mathcal{J}(m)$ with respect to the parameter $m$ is
+Then the gradient of the cost functional $$\mathcal{J}(m)$$ with respect to the parameter $$m$$ is
 
 $$
     \mathcal{G}(m)(\tilde m) := \mathscr{L}_m(u,m,p)(\tilde{m}) = \gamma(\nabla m, \nabla \tilde{m}) +
      (\tilde{m}e^m\nabla u, \nabla p) \quad \forall \tilde{m} \in \mathcal{M},
 $$
 
-where $u \in H_0^1(\Omega)$ is the solution of the forward problem,
+where $$u \in H_0^1(\Omega)$$ is the solution of the forward problem,
 
 $$ \mathscr{L}_p(u,m,p)(\tilde{p})  := (\exp(m)\nabla u, \nabla \tilde{p}) - (f,\tilde{p}) = 0
 \quad \forall \tilde{p} \in \mathcal{V}, $$
 
-and $p \in H_0^1(\Omega)$ is the solution of the adjoint problem,
+and $$p \in H_0^1(\Omega)$$ is the solution of the adjoint problem,
 
 $$ \mathscr{L}_u(u,m,p)(\tilde{u}) := (\exp(m)\nabla p, \nabla \tilde{u}) + (u-u_d,\tilde{u}) = 0
 \quad \forall \tilde{u} \in \mathcal{V}.$$
 
 ### Steepest descent method.
 
-Written in abstract form, the steepest descent methods computes an update direction $\hat{m}_k$ in the direction of the negative gradient defined as 
+Written in abstract form, the steepest descent methods computes an update direction $$\hat{m}_k$$ in the direction of the negative gradient defined as 
 
 $$
 (\tilde{m}, \hat{m}_k ) = -\mathcal{G}(m_k)(\tilde m) \quad \forall \tilde{m} \in H^1(\Omega),
 $$
 
-where the evaluation of the gradient $\mathcal{G}(m_k)$ involve the solution $u_k$ and $p_k$ of the forward and adjoint problem (respectively) for $m = m_k$.
+where the evaluation of the gradient $$\mathcal{G}(m_k)$$ involve the solution $$u_k$$ and $$p_k$$ of the forward and adjoint problem (respectively) for $$m = m_k$$.
 
-Then we set $m_{k+1} = m_k + \alpha \hat{m}_k$, where the step length $\alpha$ is chosen to guarantee sufficient descent. 
+Then we set $$m_{k+1} = m_k + \alpha \hat{m}_k$$, where the step length $$\alpha$$ is chosen to guarantee sufficient descent. 
 
 
 ### Goals:
@@ -184,7 +184,7 @@ bc_adj   = dl.DirichletBC(Vu, dl.Constant(0.), boundary)
 To generate the synthetic observation we first solve the PDE for the state variable ``utrue`` corresponding to the true parameter ``mtrue``.
 Specifically, we solve the variational problem
 
-Find $u\in \mathcal{V}$ such that 
+Find $$u\in \mathcal{V}$$ such that 
 
 $$\underbrace{(e^{m_{\text true}} \nabla u,\nabla v)}_{\; := \; a_{\rm true}} - \underbrace{(f,v)}_{\; := \;L_{\rm true}} = 0, \text{ for all } v\in \mathcal{V}$$.
 
@@ -192,7 +192,7 @@ Then we perturb the true state variable and write the observation ``ud`` as
 
 $$ u_{d} = u_{\rm true} + \eta, \quad {\rm where} \; \eta \sim \mathcal{N}(0, \sigma^2).$$
 
-Here the standard variation $\sigma$ is proportional to ``noise_level``.
+Here the standard variation $$\sigma$$ is proportional to ``noise_level``.
 
 
 ```python
@@ -259,7 +259,7 @@ Specifically,
 - `a_adj`, `L_adj` stand for the bilinear and linear form of the adjoint equation, repectively;
 - `CTvarf`, `gradRvarf` stand for the contributions to the gradient coming from the PDE and the regularization, respectively.
 
-We also build the *mass* matrix $M$ that is used to discretize the $L^2(\Omega)$ inner product.
+We also build the *mass* matrix $$M$$ that is used to discretize the $$L^2(\Omega)$$ inner product.
 
 
 ```python
@@ -283,10 +283,10 @@ M = dl.assemble(Mvarf)
 ### Finite difference check of the gradient
 
 We use a **finite difference check** to verify that our gradient derivation is correct.
-Specifically, we consider a function $ m_0\in \mathcal{M}$ and we verify that for an arbitrary direction $\tilde{m} \in \mathcal{M}$ we have
+Specifically, we consider a function $$ m_0\in \mathcal{M}$$ and we verify that for an arbitrary direction $$\tilde{m} \in \mathcal{M}$$ we have
 $$ r := \left| \frac{ \mathcal{J}(m_0 + \varepsilon \tilde{m}) - \mathcal{J}(m_0)}{\varepsilon} -  \mathcal{G}(m_0)(\tilde{m})\right| = \mathcal{O}(\varepsilon).$$
 
-In the figure below we show in a loglog scale the value of $r$ as a function of $\varepsilon$. We observe that $r$ decays linearly for a wide range of values of $\varepsilon$, however we notice an increase in the error for extremely small values of $\varepsilon$ due to numerical stability and finite precision arithmetic.
+In the figure below we show in a loglog scale the value of $$r$$ as a function of $$\varepsilon$$. We observe that $$r$$ decays linearly for a wide range of values of $$\varepsilon$$, however we notice an increase in the error for extremely small values of $$\varepsilon$$ due to numerical stability and finite precision arithmetic.
 
 
 
@@ -373,14 +373,14 @@ plt.show()
 
 We solve the constrained optimization problem using the steepest descent method with Armijo line search.
 
-The stopping criterion is based on a relative reduction of the norm of the gradient (i.e. $\frac{\|g_{n}\|}{\|g_{0}\|} \leq \tau$).
+The stopping criterion is based on a relative reduction of the norm of the gradient (i.e. $$\frac{\|g_{n}\|}{\|g_{0}\|} \leq \tau$$).
 
-The gradient is computed by solving the state and adjoint equation for the current parameter $m$, and then substituing the current state $u$, parameter $m$ and adjoint $p$ variables in the weak form expression of the gradient:
+The gradient is computed by solving the state and adjoint equation for the current parameter $$m$$, and then substituing the current state $$u$$, parameter $$m$$ and adjoint $$p$$ variables in the weak form expression of the gradient:
 
 $$ (g, \tilde{m}) = \gamma(\nabla m, \nabla \tilde{m}) +(\tilde{m}e^m\nabla u, \nabla p).$$
 
-The Armijo line search uses backtracking to find $\alpha$ such that a sufficient reduction in the cost functional is achieved.
-Specifically, we use backtracking to find $\alpha$ such that:
+The Armijo line search uses backtracking to find $$\alpha$$ such that a sufficient reduction in the cost functional is achieved.
+Specifically, we use backtracking to find $$\alpha$$ such that:
 
 $$J( m - \alpha g ) \leq J(m) - \alpha c_{\rm armijo} (g,g). $$
 
@@ -537,23 +537,23 @@ plt.show()
 
 ### Question 1
 
-> Report the number of steepest descent iterations for a discretization of the domain with $8 \times 8$, $16 \times 16$, $32 \times 32$, $64 \times 64$ finite elements and give the number of unknowns used to discretize the log diffusivity field m for each of these meshes. Discuss how the number of iterations changes as the inversion parameter mesh is refined, i.e., as the parameter dimension increases. Is steepest descent method scalable with respect to the parameter dimension?
+> Report the number of steepest descent iterations for a discretization of the domain with $$8 \times 8$$, $$16 \times 16$$, $$32 \times 32$$, $$64 \times 64$$ finite elements and give the number of unknowns used to discretize the log diffusivity field m for each of these meshes. Discuss how the number of iterations changes as the inversion parameter mesh is refined, i.e., as the parameter dimension increases. Is steepest descent method scalable with respect to the parameter dimension?
 
 The number of interations increases as we refine the mesh. Steepest descent method is not scalable with respect to the parameter dimension.
 
 ### Question 2
 
-> Add the advective term $\mathbf{v} = [30,0]^t$ to the inverse problem and its hIPPYlib/FEniCS implementation and plot the resulting reconstruction of $m$ for a noise level of 0.01 and for a reasonably chosen regularization parameter.
+> Add the advective term $$\mathbf{v} = [30,0]^t$$ to the inverse problem and its hIPPYlib/FEniCS implementation and plot the resulting reconstruction of $$m$$ for a noise level of 0.01 and for a reasonably chosen regularization parameter.
 
-See function `def AddDiffInverseProblem(nx, ny, v, gamma, useTV, TVeps, plotting)` for the implementation. Using Morozov's discrepancy principle we chose the regularization parameter $\gamma = 10^{-9}$.
+See function `def AddDiffInverseProblem(nx, ny, v, gamma, useTV, TVeps, plotting)` for the implementation. Using Morozov's discrepancy principle we chose the regularization parameter $$\gamma = 10^{-9}$$.
 
 ### Question 3
 
-> Since the coefficient $m$ is discontinuous, a better choice of regularization is total variation rather than Tikhonov regularization, to prevent an overly smooth reconstruction. Modify the implementation and plot the result for a reasonably chosen regularization parameter $\gamma$. Use $\varepsilon = 0.1$ to make the non-differentiable TV regularization term differentiable ($\varepsilon = 0.1$ has the same meaning as in Lab 2). In other words, your regularization functional should be: 
+> Since the coefficient $$m$$ is discontinuous, a better choice of regularization is total variation rather than Tikhonov regularization, to prevent an overly smooth reconstruction. Modify the implementation and plot the result for a reasonably chosen regularization parameter $$\gamma$$. Use $$\varepsilon = 0.1$$ to make the non-differentiable TV regularization term differentiable ($$\varepsilon = 0.1$$ has the same meaning as in Lab 2). In other words, your regularization functional should be: 
 
 > $$ \mathcal{R}_{\rm TV}^\varepsilon = \gamma \int_\Omega (\nabla m \cdot \nabla m + \varepsilon)^{\frac{1}{2}}\, dx. $$
 
-See function `def AddDiffInverseProblem(nx, ny, v, gamma, useTV, TVeps, plotting)`  for the implementation. Using Morozov's discrepancy principle we choose the regularization parameter $\gamma = 10^{-8}$.
+See function `def AddDiffInverseProblem(nx, ny, v, gamma, useTV, TVeps, plotting)`  for the implementation. Using Morozov's discrepancy principle we choose the regularization parameter $$\gamma = 10^{-8}$$.
 
 
 ```python

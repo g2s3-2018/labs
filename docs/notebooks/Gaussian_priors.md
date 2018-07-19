@@ -2,34 +2,34 @@
 # Gaussian priors in infinite dimensions
 
 In this notebook we show how to construct PDE-based priors that lead to well-posed Bayesian inverse problems in infinite dimesions.
-Specifically, we will consider a Gaussian prior $\mu_{\rm prior} \sim \mathcal{N}( m_{\rm prior}, \mathcal{C}_{\rm prior} )$, where
-the covariance operator $\mathcal{C}_{\rm prior}$ is defined as the inverse of an elliptic differential operator, i.e.
+Specifically, we will consider a Gaussian prior $$\mu_{\rm prior} \sim \mathcal{N}( m_{\rm prior}, \mathcal{C}_{\rm prior} )$$, where
+the covariance operator $$\mathcal{C}_{\rm prior}$$ is defined as the inverse of an elliptic differential operator, i.e.
 
 $$ \mathcal{C}_{\rm prior} = \left( \delta I - \gamma \Delta \right)^{-\alpha}, $$
 
-equipped with homogeneous Neumann, Dirichlet or Robin boundary conditions, and $m_{\rm prior} \in H^{\frac{\alpha}{2}}(\Omega)$, where $\Omega \subset \mathbb{R}^d$.
+equipped with homogeneous Neumann, Dirichlet or Robin boundary conditions, and $$m_{\rm prior} \in H^{\frac{\alpha}{2}}(\Omega)$$, where $$\Omega \subset \mathbb{R}^d$$.
 
-The parameter $\alpha > \frac{d}{2}$ controls the smoothness of the random field and ensures that $\mathcal{C}_{\rm prior}$ is a trace class operator (i.e., the infinite sum of the eigenvalues of  $\mathcal{C}_{\rm prior}$ is finite). 
-The fact that $\mathcal{C}_{\rm prior}$ is trace class is extremely important as it guaratees that the pointwise variance of the samples is finite. (Recall that for a Gaussian random field 
-$ E [\int_{\Omega}(m - m_{\rm prior})^2\,dx = \operatorname{trace}(\mathcal{C}_{\rm prior})]$).
+The parameter $$\alpha > \frac{d}{2}$$ controls the smoothness of the random field and ensures that $$\mathcal{C}_{\rm prior}$$ is a trace class operator (i.e., the infinite sum of the eigenvalues of  $$\mathcal{C}_{\rm prior}$$ is finite). 
+The fact that $$\mathcal{C}_{\rm prior}$$ is trace class is extremely important as it guaratees that the pointwise variance of the samples is finite. (Recall that for a Gaussian random field 
+$$ E [\int_{\Omega}(m - m_{\rm prior})^2\,dx = \operatorname{trace}(\mathcal{C}_{\rm prior})]$$).
 
-The parameters $\delta>0$, $\gamma>0$ can be constant in $\Omega$ (in this case the prior is called stationary) or spatially varing. It can be shown that the correlation length $\rho$ of the Gaussian random field is proportional to $\sqrt{\frac{\gamma}{\delta}}$, while the marginal (pointwise) variance $\sigma^2$ is proportional to $\delta^{-2\alpha}\rho^{-d}$.
+The parameters $$\delta>0$$, $$\gamma>0$$ can be constant in $$\Omega$$ (in this case the prior is called stationary) or spatially varing. It can be shown that the correlation length $$\rho$$ of the Gaussian random field is proportional to $$\sqrt{\frac{\gamma}{\delta}}$$, while the marginal (pointwise) variance $$\sigma^2$$ is proportional to $$\delta^{-2\alpha}\rho^{-d}$$.
 
 In addition, if one wants to introduce anysotropy in the correlation length, one can choose
 
 $$ \mathcal{C}_{\rm prior} = \left( \delta I - \operatorname{div}(\Theta \nabla) \right)^{-2 \alpha}, $$
 
-where $\Theta \in \mathbb{R}^{d\times d}$ is a symmetric positive definite tensor, with eigenvalues $\gamma_i > 0$ ($i=1,\ldots,d$) and orthonormal eigenvectors $\boldsymbol{v}_i$ ($i=1,\ldots,d$). In this case the correlation length in the direction $\boldsymbol{v}_i$ is proportional to $\sqrt{\frac{\gamma_i}{\delta}}$.
+where $$\Theta \in \mathbb{R}^{d\times d}$$ is a symmetric positive definite tensor, with eigenvalues $$\gamma_i > 0$$ ($$i=1,\ldots,d$$) and orthonormal eigenvectors $$\boldsymbol{v}_i$$ ($$i=1,\ldots,d$$). In this case the correlation length in the direction $$\boldsymbol{v}_i$$ is proportional to $$\sqrt{\frac{\gamma_i}{\delta}}$$.
 
 ## Mesh dependence issues when sampling from a non-trace class operator
 
-Here we consider the case when $\alpha <= \frac{d}{2}$ and we show that this leads to samples whose stastical properties depends on the spatial discretization.
+Here we consider the case when $$\alpha <= \frac{d}{2}$$ and we show that this leads to samples whose stastical properties depends on the spatial discretization.
 
-In particular, we take $d=2$ and consider a Laplace-like prior $\mathcal{C}_{\rm prior} = \left( \delta I - \gamma \Delta \right)^{-1}$, i.e., the case $\alpha = 1$. 
+In particular, we take $$d=2$$ and consider a Laplace-like prior $$\mathcal{C}_{\rm prior} = \left( \delta I - \gamma \Delta \right)^{-1}$$, i.e., the case $$\alpha = 1$$. 
 
-We consider three triangulation of the unit square domain $\Omega = (0,1)^2$: a coarse mesh, a fine mesh, and a locally refined mesh where the mesh size varies. 
+We consider three triangulation of the unit square domain $$\Omega = (0,1)^2$$: a coarse mesh, a fine mesh, and a locally refined mesh where the mesh size varies. 
 
-We let $\delta = 25.$ and $\gamma = 1.$, so that the correlation length $\rho$ is of the order of $0.2$.
+We let $$\delta = 25.$$ and $$\gamma = 1.$$, so that the correlation length $$\rho$$ is of the order of $$0.2$$.
 
 
 ```python
@@ -130,7 +130,7 @@ nb.multi1_plot([mesh1, mesh2, mesh3], ["Coarse mesh", "Fine mesh", "Locally refi
 ![png](Gaussian_priors_files/Gaussian_priors_4_0.png)
 
 
-## Generate samples from the Laplacian-like prior ($\alpha=1$)
+## Generate samples from the Laplacian-like prior ($$\alpha=1$$)
 
 By visually inspecting a few samples from a Laplacian-like prior in 2D we note that something is not quite right...
 
@@ -173,9 +173,9 @@ plt.show()
 ![png](Gaussian_priors_files/Gaussian_priors_6_5.png)
 
 
-## Pointwise variance for the Laplacian-like  prior ($\alpha=1$)
+## Pointwise variance for the Laplacian-like  prior ($$\alpha=1$$)
 
-The pointwise variance is larger when the mesh is finer. In the limit for $h\rightarrow 0$ the pointwise variance becomes infinite.
+The pointwise variance is larger when the mesh is finer. In the limit for $$h\rightarrow 0$$ the pointwise variance becomes infinite.
 
 
 ```python
@@ -194,9 +194,9 @@ nb.multi1_plot([pt_1, pt_2, pt_3], ["Coarse Mesh", "Fine Mesh", "Refined Mesh"],
 ![png](Gaussian_priors_files/Gaussian_priors_8_1.png)
 
 
-## Generate samples from Bilaplacian-like prior ($\alpha=2$)
+## Generate samples from Bilaplacian-like prior ($$\alpha=2$$)
 
-Samples look qualitatively the same on different meshes. In fact, $\alpha=2$ is sufficient in 2D for defining a well-behaved prior and well-posed inverse problem.
+Samples look qualitatively the same on different meshes. In fact, $$\alpha=2$$ is sufficient in 2D for defining a well-behaved prior and well-posed inverse problem.
 
 
 ```python
@@ -235,9 +235,9 @@ plt.show()
 ![png](Gaussian_priors_files/Gaussian_priors_10_5.png)
 
 
-## Pointwise variance for the Bilaplacian-like  prior ($\alpha=2$)
+## Pointwise variance for the Bilaplacian-like  prior ($$\alpha=2$$)
 
-The pointwise variance is independent of the mesh resolution. This is because $\alpha = 2$ gives a covariance belonging to the space of trace-class operators.
+The pointwise variance is independent of the mesh resolution. This is because $$\alpha = 2$$ gives a covariance belonging to the space of trace-class operators.
 
 
 ```python
@@ -264,7 +264,7 @@ To mitigate these boundary effects one could instead consider Robin boundary con
 
 $$ \nabla m \cdot \boldsymbol{n} + \beta m = 0 \text{ on } \partial\Omega, $$
 
-where the value $\beta = \frac{\sqrt{\gamma\delta}}{1.42}$ has empirically be found to be a good choice.
+where the value $$\beta = \frac{\sqrt{\gamma\delta}}{1.42}$$ has empirically be found to be a good choice.
 
 The figure below show the pointwise variance using both natural and Robin boundary conditions.
 
@@ -298,13 +298,13 @@ plt.show()
 
 
 ## Anysotropic correlation lengths
-$\newcommand{\prcov}{\mathcal{C}_{\rm prior}}$
+$$\newcommand{\prcov}{\mathcal{C}_{\rm prior}}$$
 
-Here we assume a Gaussian prior, $\mu_{\rm prior} \sim \mathcal{N}(0, \prcov)$ with zero mean and covariance matrix $\prcov = \mathcal{A}^{-2}$, where $\mathcal{A}$ is a differential operator of the form
+Here we assume a Gaussian prior, $$\mu_{\rm prior} \sim \mathcal{N}(0, \prcov)$$ with zero mean and covariance matrix $$\prcov = \mathcal{A}^{-2}$$, where $$\mathcal{A}$$ is a differential operator of the form
 
 $$ \mathcal{A} = -\gamma {\nabla\cdot}\, \left(\Theta\, {\nabla}\right) + \delta I. $$
 
-Here $\Theta$ is a s.p.d. anisotropic tensor of the form
+Here $$\Theta$$ is a s.p.d. anisotropic tensor of the form
 
 $$ \Theta =
 \begin{bmatrix}
