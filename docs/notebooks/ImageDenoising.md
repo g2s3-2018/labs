@@ -153,8 +153,11 @@ More specifically it minimizes the functional
 $$ \mathcal{F}_{TN}(u) = \frac{1}{2}\int_\Omega (u - u_0)^2 \; d\boldsymbol{x} + \frac{\alpha}{2}\int_\Omega \nabla u \cdot \nabla u d\boldsymbol{x}. $$
 
 The first variation of $$\mathcal{F}_{TN}$$ reads
+
 $$ \delta_u \mathcal{F}_{TN}(u, \hat{u}) = \int_\Omega (u - u_0) \hat{u} \; d\boldsymbol{x} + \alpha \int_\Omega \nabla u \cdot \nabla \hat{u}  d\boldsymbol{x}, $$
+
 and the second variation is
+
 $$ \delta_u^2 \mathcal{F}_{TN}(u, \hat{u}, \tilde{u}) = \int_\Omega \tilde{u}\, \hat{u} \; d\boldsymbol{x} + \alpha \int_\Omega \nabla \tilde{u} \cdot \nabla \hat{u}\, d\boldsymbol{x}. $$
 
 The best reconstruction of the original image is obtained for $$\alpha = 10^{-3}$$, however we notice that the sharp edges of the image are lost in the reconstruction.
