@@ -8,11 +8,11 @@ $$\def\data{ {\bf d}_\rm{obs}}
 \def\matrix{\bf}
 \def\Hmisfit{ \mathcal{H}_{\text{misfit}} }
 \def\diag{\operatorname{diag}}
-\def\Vr{{\matrix V}_r}
-\def\Wr{{\matrix W}_r}
-\def\Ir{{\matrix I}_r}
-\def\Dr{{\matrix D}_r}
-\def\H{{\matrix H} }
+\def\Vr{ {\matrix V}_r }
+\def\Wr{ {\matrix W}_r }
+\def\Ir{ {\matrix I}_r }
+\def\Dr{ {\matrix D}_r }
+\def\H{ {\matrix H} }
 $$ 
 # Bayesian quantification of parameter uncertainty:
 ## Estimating the Gaussian approximation of posterior pdf of the coefficient parameter field in an elliptic PDE
