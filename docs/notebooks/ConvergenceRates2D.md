@@ -18,7 +18,7 @@ Here, $\Gamma_D \subset \Omega$ denotes the part of the boundary where we prescr
 
 The coefficient $f$, $g$, $u_D$ are chosen such that the analytical solution is $u_{ex} = e^{\pi y} \sin(\pi x)$.
 
-To obtain the weak form, we define the functional spaces $V_{u_D} = \{ v \in H^1(\Omega) \, |\, v = u_D \text{ on } \Gamma_D\}$ and $V_{0} = \{ v \in H^1(\Omega) \,| \, v = 0 \text{ on } \Gamma_D\}$.
+To obtain the weak form, we define the functional spaces $V_{u_D} = \{ v \in H^1(\Omega) \, \vert\, v = u_D \text{ on } \Gamma_D\}$ and $V_{0} = \{ v \in H^1(\Omega) \,\vert \, v = 0 \text{ on } \Gamma_D\}$.
 
 Then, the weak formulation of the boundary value problem reads
 
@@ -27,10 +27,10 @@ $$ \int_\Omega \nabla u \cdot \nabla v \, dx = \int_\Omega f\,v \, dx + \int_{\G
 
 Finally, to obtain the finite element discretization we introduce a uniform triangulation (mesh) $\mathcal{T}_h$ of the domain $\Omega$ and finite dimensional subspace $V_h \subset H^1(\Omega)$. 
 The space $V_{h}$ consists of globally continuous functions that are piecewise polynomial with degree $k$ on each element $\tau$ of the mesh $\mathcal{T}_h$, that is
-$$ V_h := \left\{ v_h \in V \; | \; \left. v_h \right|_{\tau} \in P^{k} \quad  \forall \tau \in \mathcal{T}_h \right\},$$
+$$ V_h := \left\{ v_h \in V \; \vert \; \left. v_h \right\vert_{\tau} \in P^{k} \quad  \forall \tau \in \mathcal{T}_h \right\},$$
 where $P^{k}$ denotes the space of polynomial function with degree $k$.
 
-By letting $V_{h, u_D} := \{ v_h \in V_h \, | \, v_h = u_D \text{ on } \Gamma_D\}$ and $V_{h, 0} := \{ v_h \in V_h \, | \, v_h = 0 \text{ on } \Gamma_D\}$, the finite element discretization of the BVP reads:
+By letting $V_{h, u_D} := \{ v_h \in V_h \, \vert \, v_h = u_D \text{ on } \Gamma_D\}$ and $V_{h, 0} := \{ v_h \in V_h \, \vert \, v_h = 0 \text{ on } \Gamma_D\}$, the finite element discretization of the BVP reads:
 
 Find $u_h \in V_{h, u_D}$ such that
 $$ \int_\Omega \nabla u_h \cdot \nabla v_h \, dx = \int_\Omega f\,v_h \, dx + \int_{\Gamma_N} g\,v_h\,ds, \quad \forall v_h \in V_{h,0}. $$
@@ -40,10 +40,10 @@ $$ \int_\Omega \nabla u_h \cdot \nabla v_h \, dx = \int_\Omega f\,v_h \, dx + \i
 Assuming that the analytical solution is regular enough (i.e. $u_{\rm ex} \in H^{k+1}(\Omega)$), the following error estimates hold
 
 - Energy norm:
-$$ \left\| u_{\rm ex} - u_h \right\|_{\rm energy} := \left( \int_\Omega \left| \nabla u_{\rm ex} - \nabla u_{h}\right|^2 dx \right)^{\frac{1}{2}} = \mathcal{O}(h^k), $$
+$$ \left\| u_{\rm ex} - u_h \right\|_{\rm energy} := \left( \int_\Omega \left\vert \nabla u_{\rm ex} - \nabla u_{h}\right\vert^2 dx \right)^{\frac{1}{2}} = \mathcal{O}(h^k), $$
 
 - $L^2(\Omega)$ norm:
-$$ \left\| u_{\rm ex} - u_h \right\|_{L^2} := \left( \int_\Omega \left|u_{\rm ex} - u_{h}\right|^2 dx \right)^{\frac{1}{2}} = \mathcal{O}(h^{k+1}), $$
+$$ \left\| u_{\rm ex} - u_h \right\|_{L^2} := \left( \int_\Omega \left\vert u_{\rm ex} - u_{h}\right\vert^2 dx \right)^{\frac{1}{2}} = \mathcal{O}(h^{k+1}), $$
 
 where $h$ denote the mesh size.
 
