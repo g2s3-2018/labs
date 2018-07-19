@@ -18,7 +18,7 @@ Here, $\Gamma_D \subset \Omega$ denotes the part of the boundary where we prescr
 
 The coefficient $f$, $g$, $u_D$ are chosen such that the analytical solution is $u_{ex} = e^{\pi y} \sin(\pi x)$.
 
-To obtain the weak form, we define the functional spaces $V_{u_D} = \{ v \in H^1(\Omega) \, \vert\, v = u_D \text{ on } \Gamma_D\}$ and $V_{0} = \{ v \in H^1(\Omega) \,\vert \, v = 0 \text{ on } \Gamma_D\}$.
+To obtain the weak form, we define the functional spaces $V_{u_D} = \{ v \in H^1(\Omega) \, \vert\, v = u_D \,{\rm on }\, \Gamma_D\}$ and $V_{0} = \{ v \in H^1(\Omega) \, \vert \, v = 0 \,{\rm on }\, \Gamma_D\}$.
 
 Then, the weak formulation of the boundary value problem reads
 
