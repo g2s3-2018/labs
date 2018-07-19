@@ -313,9 +313,12 @@ plt.show()
 
 The infinite dimensional Newton step reads
 
-*Given *$$u_n \in H_0^1$$, *find * $$\tilde{u} \in H^1_0$$ *such that*
+Given $$u_n \in H_0^1$$, find  $$\tilde{u} \in H^1_0$$ such that
+
 $$ \delta_u^2 \Pi(u_n, \hat{u}, \tilde{u}) =  - \delta_u \Pi(u_n, \hat{u}) \quad $$
+
 Update the solution $$u_{n+1}$$ using the Newton direction $$\tilde{u}$$
+
 $$ u_{n+1} = u + \alpha \tilde{u}.$$
 
 Here, for simplicity, we choose $$\alpha$$ equal to 1. In general, to guarantee global convergence of the Newton method the parameter $$\alpha$$ should be appropriately chosen (e.g. *back-tracking* or *line search*).
@@ -497,7 +500,7 @@ $$\delta^2 \Pi(u, \tilde{u}, \hat{u}) = \int_\Omega \nabla \tilde{u} \cdot\nabla
 
 The weak form of Newton step then reads
 
-*Given *$$u^{(n)} \in H^1$$, *find * $$\tilde{u} \in H^1$$ *such that*
+Given $$u^{(n)} \in H^1$$, find  $$\tilde{u} \in H^1$$ such that
 
 $$ \int_\Omega \nabla \tilde{u} \cdot\nabla \hat{u}\, dx + \int_\Omega e^{-u^{(n)}}\,\tilde{u}\,\hat{u}\, dx + \int_{\partial\Omega } \tilde{u}\, \hat{u}\,ds = -
 \left( \int_\Omega \nabla u^{(n)} \cdot\nabla \hat{u}\, dx - \int_\Omega e^{-u^{(n)}}\,\hat{u}\, dx + \int_{\partial\Omega } u^{(n)}\, \hat{u}\right) \quad \forall \hat{u} \in H^1.$$
