@@ -16,7 +16,7 @@ u = u_D & \text{on} \; \Gamma_D, \\
 
 Here, $$\Gamma_D \subset \Omega$$ denotes the part of the boundary where we prescribe Dirichlet boundary conditions, and $$\Gamma_N \subset \Omega$$ denotes the part of the boundary where we prescribe Neumann boundary conditions. $$\boldsymbol{n}$$ denotes the unit normal of $$\partial \Omega$$ pointing outside $$\Omega$$. 
 
-To obtain the weak form we define the functional spaces $$V_{u_D} := \left\{ u \in H^1(\Omega) \, |\, u = u_D \text{ on } \Gamma_D \right\}$$ and $$V_{0} := \left\{ u \in H^1(\Omega) \, |\, u = 0 \text{ on } \Gamma_D \right\}$$.
+To obtain the weak form we define the functional spaces $$V_{u_D} := \left\{ u \in H^1(\Omega) \, \vert \, u = u_D \text{ on } \Gamma_D \right\}$$ and $$V_{0} := \left\{ u \in H^1(\Omega) \, \vert \, u = 0 \text{ on } \Gamma_D \right\}$$.
 Then we multiply the strong form by an arbitrary function $$v \in V_0$$ and integrate over $$\Omega$$:
 
 $$ - \int_\Omega \Delta u \, v \, dx = \int_\Omega f\,v \, dx, \quad \forall v \in V_0. $$
@@ -32,12 +32,12 @@ $$ \int_\Omega \nabla u \cdot \nabla v \, dx = \int_\Omega f\,v \, dx + \int_{\G
 
 To obtain the finite element discretization we then introduce a triangulation (mesh) $$\mathcal{T}_h$$ of the domain $$\Omega$$ and we define a finite dimensional subspace $$V_h \subset H^1(\Omega)$$ consisting of globally continuous functions that are piecewise polynomial on each element of $$\mathcal{T}_h$$.
 
-By letting $$V_{h, u_D} := \{ v_h \in V_h \,|\, v_h = u_D \text{ on } \Gamma_D\}$$ and $$V_{h, 0} := \{ v_h \in V_h \,|\, v_h = 0 \text{ on } \Gamma_D\}$$, the finite element method then reads:
+By letting $$V_{h, u_D} := \{ v_h \in V_h \, \vert \, v_h = u_D \text{ on } \Gamma_D\}$$ and $$V_{h, 0} := \{ v_h \in V_h \,\vert\, v_h = 0 \text{ on } \Gamma_D\}$$, the finite element method then reads:
 
 Find $$u_h \in V_{h, u_D}$$ such that:
 $$ \int_\Omega \nabla u_h \cdot \nabla v_h \, dx = \int_\Omega f\,v_h \, dx + \int_{\Gamma_N} g\,v_h\,ds, \quad \forall v_h \in V_{h,0}. $$
 
-In what follow, we will let $$\Omega := [0,1]\times[0,1]$$ be the unit square, $$\Gamma_N := \{ (x,y) \in \partial\Omega \,|\, y = 1\}$$ be the top boundary, and $$\Gamma_D := \partial\Omega \setminus \Gamma_N$$ be the union of the left, bottom, and right boundaries.
+In what follow, we will let $$\Omega := [0,1]\times[0,1]$$ be the unit square, $$\Gamma_N := \{ (x,y) \in \partial\Omega \,\vert\, y = 1\}$$ be the top boundary, and $$\Gamma_D := \partial\Omega \setminus \Gamma_N$$ be the union of the left, bottom, and right boundaries.
 
 The coefficient $$f$$, $$g$$, $$u_D$$ are chosen such that the analytical solution is $$u_{ex} = e^{\pi y} \sin(\pi x)$$.
 
@@ -187,8 +187,8 @@ Here, $$\Gamma_D \subset \Omega$$ denotes the part of the boundary where we pres
 
 To derive the weak form, we first define the function spaces $$V_{u_D}$$ and $$V_0$$ subspaces of $$H^1(\Omega)$$ associated with the inhomogeneuos and homogeneuos form of the Dirichlet boundary condition:
 
-$$ V_{u_D} = \{ v \in H^1(\Omega) \, | \, v = u_D \text{ on } \Gamma_D \}, \text{ and }
-V_{0} = \{ v \in H^1(\Omega) \, | \, v = 0 \text{ on } \Gamma_D \}.$$
+$$ V_{u_D} = \{ v \in H^1(\Omega) \, \vert \, v = u_D \text{ on } \Gamma_D \}, \text{ and }
+V_{0} = \{ v \in H^1(\Omega) \, \vert \, v = 0 \text{ on } \Gamma_D \}.$$
 
 Then we multiply the strong form by an arbitrary function $$v \in V_0$$ and integrate over $$\Omega$$:
 

@@ -3,7 +3,7 @@
 
 In this example we solve the following nonlinear minimization problem
 
-*Find * $$u^* \in H^1_0(\Omega)$$ *such that*
+Find $$u^* \in H^1_0(\Omega)$$ such that
 
 $$ u^* = \operatorname*{argmin}_{u \in H^1_0(\Omega)} \Pi(u). $$
 
@@ -37,7 +37,7 @@ $$\frac{\Pi(u + \varepsilon \hat{u}) - \Pi(u)}{\epsilon} = \int_\Omega \left[k_2
 
 By neglecting the $$\mathcal{O}(\epsilon)$$ terms, we write the weak form of the necessary conditions as
 
-*Find *$$u\in H_0^1(\Omega)$$ *such that*
+Find $$u\in H_0^1(\Omega)$$ such that
 
 $$ \int_\Omega \left[k_2 u \hat{u} \nabla u \cdot \nabla u + (k_1 + k_2u^2)\nabla \hat{u}\cdot \nabla u\right] dx = \int_\Omega f \hat{u} dx \quad \forall \hat{u} \in H_0^1.$$
 
@@ -63,7 +63,7 @@ $$ \delta_u^2\Pi(u, \hat{u}, \tilde{u}) = \left. \frac{d}{d\varepsilon} \delta_u
 
 The infinite-dimensional Newton's method reads
 
-*Given the current solution *$$u_k$$, *find* $$\tilde{u} \in H^1_0$$ *such that*
+*Given the current solution* $$u_k$$, *find* $$\tilde{u} \in H^1_0$$ *such that*
 
 $$ \delta_u^2 \Pi(u_k, \hat{u}, \tilde{u}) = -\delta_u \Pi(u_k, \hat{u}) \quad \forall \, \hat{u} \in H_0^1.$$
 
@@ -83,7 +83,7 @@ $$\delta^2 \Pi(u, \tilde{u}, \hat{u}) := \frac{d}{d\varepsilon} \delta_u \Pi(u+\
 
 ### Weak form of Newton step:
 
-*Given *$$u \in H_0^1$$, *find * $$\tilde{u} \in H^1_0$$ *such that*
+*Given* $$u \in H_0^1$$, *find* $$\tilde{u} \in H^1_0$$ *such that*
 
 $$\int_\Omega \left[k_2\tilde{u}\hat{u}\nabla u \cdot \nabla u + 2k_2 u \hat{u} \nabla \tilde{u} \cdot \nabla u + 2k_2 u \tilde{u} \nabla \hat{u} \cdot \nabla u + (k_1 + k_2u^2) \nabla \hat{u} \cdot \nabla \tilde{u} \right] dx = - \int_\Omega \left[k_2 u \hat{u} \nabla u \cdot \nabla u + (k_1 + k_2u^2)\nabla \hat{u}\cdot \nabla u -f \hat{u} \right] dx \quad \forall \, \hat{u} \in H_0^1. $$
 
@@ -435,7 +435,7 @@ plt.show()
 
 Consider the following nonlinear minimization problem
 
-*Find * $$u^* \in H^1(\Omega)$$ *such that*
+Find  $$u^* \in H^1(\Omega)$$ such that
 
 $$ u^* = \operatorname*{argmin}_{u \in H^1(\Omega)} \Pi(u), $$
 
@@ -465,7 +465,7 @@ $$ \frac{d}{d \varepsilon} \Pi(u + \varepsilon \hat{u}) = \int_\Omega (\nabla u 
 
 After setting $$\varepsilon = 0$$, we write the weak form of the necessary conditions as
 
-*Find *$$u\in H^1(\Omega)$$ *such that*
+*Find* $$u\in H^1(\Omega)$$ *such that*
 
 $$ \int_\Omega \nabla u \cdot\nabla \hat{u}\, dx - \int_\Omega e^{-u}\,\hat{u}\, dx + 
 \int_{\partial \Omega} u \, \hat{u} \, ds = 0 \quad \forall \hat{u} \in H^1.$$
