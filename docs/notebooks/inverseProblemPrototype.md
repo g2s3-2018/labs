@@ -345,7 +345,7 @@ plt.show()
 
 #### Informed and uninformed modes
 
-The functions $$v_i$$ ($$i=1,2,3, \ldots$$) form an orthonormal basis of L^2([0,1]). 
+The functions $$v_i$$ ($$i=1,2,3, \ldots$$) form an orthonormal basis of $$L^2([0,1])$$. 
 
 That is, every function $$f \in L^2([0,1])$$ can be written as
 
@@ -406,7 +406,7 @@ $$\mathbf{m}_{\alpha}$$ can then be computed by solving the normal equations
 
 $$ ( F^t F + \alpha I) \mathbf{m}_{\alpha} = F^t \mathbf{d}.$$
 
-The code below, find the Tikhonov regularized solution $$\mathbf{m}_{\alpha}$$ for $$\alpha = 1e-3$$.
+The code below, find the Tikhonov regularized solution $$\mathbf{m}_{\alpha}$$ for $$\alpha = 10^{-3}$$.
 
 > **Disclaimer**: In the code below, for simplicity, we explicitly construct and factorize the matrix $$F^t F + \alpha I$$. This approach is not feasible and should **never** be used to solve real problems (the computational cost is  $$\mathcal{O}(n^3)$$). Instead, as we will see tomorrow, one should solve the normal equations using the conjugate gradient algorithm, which only requires the ability to compute the action of $$F^t F + \alpha I$$ on a few given directions $$\mathbf{m}$$, and is guaranteed to converge in a number of iterations that is independent of $$n$$.
 
