@@ -62,7 +62,7 @@ $$
 $$
 
 $$
-\pi_{\text like}(\data \; | \; m)  = \exp \left( - \tfrac{1}{2} \parallel {\bf f}(m) - \data \parallel^{2}_{{\bf \Gamma}_{\text{noise}}^{-1}}\right)
+\pi_{\text like}(\data \; | \; m)  = \exp \left( - \tfrac{1}{2} \parallel {\bf f}(m) - \data \parallel^{2}_{ {\bf \Gamma}_{\text{noise}}^{-1}}\right)
 $$
 
 Here ${\bf f}$ is the parameter-to-observable map that takes a parameter $m$ and maps
@@ -73,7 +73,7 @@ In this application, ${\bf f}$ consists in the composition of a PDE solve (to co
 #### The posterior
 
 $$
-d\mu_{\text{post}}(m \; | \; \data)  \propto \exp \left( - \tfrac{1}{2} \parallel {\bf f}(m) - \data \parallel^{2}_{{\bf \Gamma}_{\text{noise}}^{-1}} \! - \tfrac{1}{2}\parallel m - m_{\rm prior} \parallel^{2}_{\prcov^{-1}} \right)
+d\mu_{\text{post}}(m \; | \; \data)  \propto \exp \left( - \tfrac{1}{2} \parallel {\bf f}(m) - \data \parallel^{2}_{ {\bf \Gamma}_{\text{noise}}^{-1}} \! - \tfrac{1}{2}\parallel m - m_{\rm prior} \parallel^{2}_{\prcov^{-1}} \right)
 $$
 
 ### The Laplace approximation to the posterior: $\nu \sim \mathcal{N}({\map},\bf \postcov)$
