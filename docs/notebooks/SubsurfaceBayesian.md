@@ -120,7 +120,7 @@ $$
 where $${\matrix \Lambda} = \diag(\lambda_i) \in \mathbb{R}^{n\times n}$$
 contains the generalized eigenvalues and the columns of $${\matrix V}\in
 \mathbb R^{n\times n}$$ the generalized eigenvectors such that 
-$${\matrix V}^T \prcov^{-1} {\matrix V} = {\matrix I}$$.
+$${\matrix V}^T \Gprior^{-1} {\matrix V} = {\matrix I}$$.
 
 #### Randomized eigensolvers to construct the approximate spectral decomposition
 
