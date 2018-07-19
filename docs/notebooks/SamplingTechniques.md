@@ -34,7 +34,7 @@ $$
 p_m(m) = p_z(T(m))\,\left|\det{\nabla T}\right|
 $$
 
-where $\left\vert\det{\nabla T}\right\vert$ denotes the determinant of the Jacobian matrix of $T(m)$. The $p_m(m)$ is the *banana density* and (for $a=1$) it looks like:
+where $$\left\vert\det{\nabla T}\right\vert$$ denotes the determinant of the Jacobian matrix of $$T(m)$$. The $$p_m(m)$$ is the *banana density* and (for $a=1$) it looks like:
 <img src="BananaDensity.png" height=200px alt="Banana Density">
 
 
