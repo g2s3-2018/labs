@@ -2,19 +2,19 @@ docs_list_title: G2S3 2018
 docs:
 
 - title: Home
-  url: /index.html
+  url: index.html
  
 - title: Topics
-  url: /topics.html
+  url: topics.html
  
 - title: Location
-  url: /location.html
+  url: location.html
  
 - title: Applications
-  url: /applications.html
+  url: applications.html
   
 - title: Acknowledgement
-url: /acknowledgement.html
+url: acknowledgement.html
 
 - title: Lab material
-url: /labs/index.html
+url: labs/index.html
