@@ -9,7 +9,7 @@ layout: default
 - **Finite element method, calculus of variations, image denoising** (Tuesday 06/19):
   - [Poisson2D](notebooks/Poisson2D.html): Finite element solution of the Poisson equation in 2D using FEniCS ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab2_Tuesday/Poisson2D.ipynb) )
   - [Convergence rates](notebooks/ConvergeRates2D.html): Convergence rates of the finite element method for the Poisson equation in 2D ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab2_Tuesday/ConvergenceRates2D.ipynb))
-  - [Unconstrained minimization](notebooks/UnconstrainedMinimization.html): This notebook illustrates the minimization of a non-quadratic energy functional using Netwon Method ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab3_Wednesday/UnconstrainedMinimization.ipynb))
+  - [Unconstrained minimization](notebooks/UnconstrainedMinimization.html): This notebook illustrates the minimization of a non-quadratic energy functional using Netwon Method ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab2_Tuesday/UnconstrainedMinimization.ipynb))
   - [Image denoising](notebooks/ImageDenoising.html): This notebook illustrate the use of Tikhonov and Total Variation regularization to solve an image denoising problem ([.ipynb](https://github.com/g2s3-2018/labs/blob/master/Labs/Lab2_Tuesday/ImageDenoising/ImageDenoising.ipynb))
   
 - **Deterministic Inversion** (Thursday 06/21):
