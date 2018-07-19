@@ -455,6 +455,7 @@ $$
 $$
 
 The Gauss-Newton Hessian action is obtained by dropping the second derivatives operators $$\bW_{\scriptsize\mbox{um}}\,\bhm$$, $$\bW_{\scriptsize\mbox{mm}}\bf \bhm$$, and $$\bW_{\scriptsize\mbox{mu}} \bhu$$:
+
 $$
 \begin{align}
 \bhu &= -\bA^{-1} \bC \bf \bhm\, & \text{incremental forward}\\
