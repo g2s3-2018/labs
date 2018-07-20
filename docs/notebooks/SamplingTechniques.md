@@ -35,6 +35,7 @@ p_m(m) = p_z(T(m))\,\left|\det{\nabla T}\right|
 $$
 
 where $$\left\vert\det{\nabla T}\right\vert$$ denotes the determinant of the Jacobian matrix of $$T(m)$$. The $$p_m(m)$$ is the *banana density* and (for $a=1$) it looks like:
+
 <img src="BananaDensity.png" height=200px alt="Banana Density">
 
 
@@ -44,7 +45,7 @@ $$
 \nabla T(m) = \left[ \begin{array}{cc} \frac{1}{a} & 0\\ 2ab m_1& a\end{array} \right].
 $$
 
-The determinant of a lower triangular matrix is the product of the digaonal entries, so $\left|\det{\nabla T}\right| = \frac{1}{a} a$.  Interestingly, the determinant of this Jacobian is always $1$, regardless of $a$ and $m$!  Thus, **for this problem** $p_m(m) = p_z(T(m))$.  It is important to note that this is a very special case and in general, the determinant term is required to define $p_m(m)$.
+The determinant of a lower triangular matrix is the product of the digaonal entries, so $\left\vert\det{\nabla T}\right\vert = \frac{1}{a} a$.  Interestingly, the determinant of this Jacobian is always $1$, regardless of $a$ and $m$!  Thus, **for this problem** $p_m(m) = p_z(T(m))$.  It is important to note that this is a very special case and in general, the determinant term is required to define $p_m(m)$.
 
 
 ```python

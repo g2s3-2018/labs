@@ -5,9 +5,9 @@ Sea ice forms when saline ocean water freezes during cold winter months.  Note t
 
 Sea ice is commonly divided into multiple categories, such as first year ice and multiyear ice.  Multiyear ice is defined as ice that has survived at least one summer season.  Interestingly, multiyear ice often is often signficantly different that first year ice.  It is typically less saline, rougher, and thicker. 
 
-In [1], satellite observations were used to estimate the age of ice across the Arctic basin from 1984 through 2016.  In this example, we will use their results to analyze the dependence of the January ice age on latitude, longitude, and time.
+In `[1]`, satellite observations were used to estimate the age of ice across the Arctic basin from 1984 through 2016.  In this example, we will use their results to analyze the dependence of the January ice age on latitude, longitude, and time.
 
-Let $y(x,t)$ denote the observed age (from [1]) at a location $x$ and time $t$.  The value of $y(x,t)$ can be one of three things:
+Let $y(x,t)$ denote the observed age (from `[1]`) at a location $x$ and time $t$.  The value of $y(x,t)$ can be one of three things:
 
 $$
 y(x,t) \in \{0,1,2\} = \{\text{No Ice},\,\, \text{First Year},\,\, \text{Multiyear} \}
@@ -53,7 +53,7 @@ $$
 
 
 ### References
-[1] Tschudi, M., C. Fowler, J. Maslanik, J. S. Stewart, and W. Meier. 2016. EASE-Grid Sea Ice Age, Version 3. Boulder, Colorado USA. NASA National Snow and Ice Data Center Distributed Active Archive Center. doi: https://doi.org/10.5067/PFSVFZA9Y85G. [06/14/2018].
+`[1]` Tschudi, M., C. Fowler, J. Maslanik, J. S. Stewart, and W. Meier. 2016. EASE-Grid Sea Ice Age, Version 3. Boulder, Colorado USA. NASA National Snow and Ice Data Center Distributed Active Archive Center. doi: https://doi.org/10.5067/PFSVFZA9Y85G. `[06/14/2018]`.
 
 ### Imports
 
@@ -147,6 +147,7 @@ s_i(x,t;m) = \sum_{j=1}^P m_{i,j}\Phi_j(x,t)
 $$
 
 We collect all of the predictor variables into a single vector $s$ given by
+
 $$
 s = \left[\begin{array}{c} s_1(x_1, t_1; m)\\ s_2(x_1, t_1; m) \\ s_3(x_1, t_1; m) \\ s_1(x_2, t_2; m) \\ \vdots \\ s_1(x_N, t_N; m)\\ s_2(x_N, t_N; m) \\ s_3(x_N, t_N; m) \end{array}\right].
 $$

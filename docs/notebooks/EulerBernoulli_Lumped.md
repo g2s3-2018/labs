@@ -3,7 +3,7 @@
 
 Recall the beam from last week. Previously, we fixed the material properties and inferred the applied load.  Here we flip the problem, the loads will be fixed and we will infer the material properties.
 
-<img src="BeamDrawing.png" width=300px>
+![png](BeamDrawing.png)
 
 ### Formulation:
 
@@ -62,7 +62,7 @@ p(m|y) \propto p(y|m)p(m),
 $$
 involves several steps.  The computational graph below highlights the steps necessary to evaluate the posterior.  This graph is also similar to the one we will construct with MUQ below.
 
-<img src="PosteriorGraphStart.png" width=500px>
+![png](PosteriorGraphStart.png)
 
 ## Imports
 
