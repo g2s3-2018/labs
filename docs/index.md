@@ -27,6 +27,10 @@ Note the updated/new FEniCS tutorial version [here](http://hplgit.github.io/feni
 For more detailed instructions, please check out the ''Getting started with FEniCS'' document available 
 [here](http://faculty.ucmerced.edu/npetra/docs/).
 
+- A Docker image with all the lab session material and software (hIPPYlib, MUQ, FEniCS and their dependencies) preinstalled is available [here](https://hub.docker.com/r/mparno/muq-hippylib/). The username is `user1` and password `Breckenridge1_g2s3`.
+
+- Finally, you can clone the git repository of the lab session material from [here](https://github.com/g2s3-2018/labs).
+
 ## Lab sessions material
 
 - **Ill-posedness** (Monday 06/18):
